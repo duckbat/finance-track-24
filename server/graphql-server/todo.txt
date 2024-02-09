@@ -1,0 +1,6 @@
+Separate graphql-server for Finance-tracker app with media upload functionalities
+
+TODO:
+
+- Create and add Database to env
+- Create own graphql schemas and other needed files
