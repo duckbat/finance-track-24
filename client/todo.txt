@@ -1,10 +1,5 @@
 - Todo
- - Vite_Media_API
- - Vite_Auth_API
- - Database scheme
- - Mockdata to datajson
- - Routing
- - Profile page
+
 
 
 - Doing
