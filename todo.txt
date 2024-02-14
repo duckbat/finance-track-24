@@ -1,0 +1,29 @@
+- Client: 
+    - ToDo:
+    * Add mock data to it
+    * Build components
+    * Connect those components
+    * React router
+    * Handle all hooks and states
+    * Connect to backend
+
+    - Doing:
+    * Prototype an web-application in Figma or other source
+
+    - Done
+
+
+- Server:
+    - ToDo:
+    * Create database for project
+    * Working backend logic ;P
+
+    - Doing:
+
+    - Done
+
+
+- Overall: 
+    - Functionalities ToDo: 
+    * Friends add and search
+    * Notification center

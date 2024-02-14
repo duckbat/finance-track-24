@@ -1,30 +1,24 @@
-import {Link, Outlet} from "react-router-dom";
+import {Outlet} from 'react-router-dom';
+import Navigation from '../components/SideNavBar';
 
 const Layout = () => {
+
   return (
-    <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/profile">Profile</Link>
-            </li>
-            <li>
-              <Link to="/upload">Upload</Link>
-            </li>
-          </ul>
+    <>
+      <div>
+        <nav className="pb-2 ">
+        <Navigation />
         </nav>
-      <main>
-        <Outlet />
-      </main>
-      <footer>
-        <p>Copyright 2024 - DB</p>
-      </footer>
-    </div>
+
+        <main className=''>
+          <p>Home Componen</p>
+          <Outlet />
+        </main>
+        <hr />
+        <p>Footer Componen</p>
+      </div>
+    </>
   );
 };
-
 
 export default Layout;
