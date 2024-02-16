@@ -12,7 +12,7 @@ const Layout = () => {
         </nav>
         <main>
           <Outlet />
-          <Example age={21} />
+          <Example age={21} name = {'Khai Dang'} />
           <p style={{ marginBottom: '1500px', overflow: "none" }}>Home Component</p>
         </main>
         <hr />

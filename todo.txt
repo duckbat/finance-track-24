@@ -6,6 +6,8 @@
     * React router
     * Handle all hooks and states
     * Connect to backend
+    * Functionalities of like, comments and share
+    * Implement zustand state manager
 
     - Doing:
     * Prototype an web-application in Figma or other source

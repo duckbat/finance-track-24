@@ -1,0 +1,31 @@
+scalar DateTime
+
+type Rating {
+  rating_id: ID!
+  media: MediaItem!
+  user: User!
+  rating_value: Int! @constraint(min: 1, max: 5)
+  created_at: DateTime!
+}
+
+type Query {
+  ratings: [Rating!]!
+  ratingsByMediaID(media_id: ID!): [Rating!]!
+  """
+  Requires authorization token
+  """
+  myRatings: [Rating!]!
+}
+
+type Mutation {
+  """
+  Requires authorization token.
+
+  createRating will update the rating if it already exists
+  """
+  createRating(media_id: ID!, rating_value: Int!): Message
+  """
+  Requires authorization token
+  """
+  deleteRating(rating_id: ID!): Message
+}

@@ -1,0 +1,33 @@
+scalar DateTime
+
+type Comment {
+  comment_id: ID!
+  media: MediaItem!
+  user: User!
+  comment_text: String!
+  created_at: DateTime!
+}
+
+type Query {
+  comments: [Comment]
+  commentsByMediaID(media_id: ID!): [Comment]
+  """
+  Requires authorization token
+  """
+  myComments: [Comment]
+}
+
+type Mutation {
+  """
+  Requires authorization token
+  """
+  createComment(media_id: ID!, comment_text: String!): Message
+  """
+  Requires authorization token
+  """
+  deleteComment(comment_id: ID!): Message
+  """
+  Requires authorization token
+  """
+  updateComment(comment_id: ID!, comment_text: String!): Message
+}

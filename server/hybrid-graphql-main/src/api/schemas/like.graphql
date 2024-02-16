@@ -1,0 +1,29 @@
+scalar DateTime
+
+type Like {
+  like_id: ID!
+  media: MediaItem!
+  user: User!
+  created_at: DateTime!
+}
+
+type Query {
+  likes: [Like]
+  likesByMediaID(media_id: ID!): [Like]
+  likesByUserID(user_id: ID!): [Like]
+  """
+  Requires authorization token
+  """
+  myLikes: [Like]
+}
+
+type Mutation {
+  """
+  Requires authorization token
+  """
+  createLike(media_id: ID!): Message
+  """
+  Requires authorization token
+  """
+  deleteLike(like_id: ID!): Message
+}

@@ -1,0 +1,71 @@
+scalar DateTime
+
+type MediaItem {
+  media_id: ID!
+  user_id: ID!
+  owner: User!
+  filename: String!
+  thumbnail: String!
+  filesize: Int!
+  media_type: String!
+  title: String!
+  description: String
+  created_at: DateTime!
+  tags: [Tag]
+  likes: [Like]
+  ratings: [Rating]
+  comments: [Comment]
+  comments_count: Int!
+  likes_count: Int!
+  average_rating: Float
+}
+
+type Query {
+  mediaItems: [MediaItem]
+  mediaItem(media_id: ID!): MediaItem
+  mediaItemsByTag(tag_id: ID!): [MediaItem]
+  """
+  Requires authorization token
+  """
+  myMediaItems: [MediaItem]
+  mostLikedMediaItem: MediaItem
+  mostRatedMediaItem: MediaItem
+  mostCommentedMediaItem: MediaItem
+}
+
+input MediaItemInput {
+  user_id: ID!
+  filename: String!
+  filesize: Int!
+  media_type: String!
+  title: String!
+  description: String
+}
+
+input AddTagToMediaItemInput {
+  media_id: ID!
+  tag_name: String!
+}
+
+type Mutation {
+  """
+  Requires authorization token
+  """
+  createMediaItem(input: MediaItemInput!): MediaItem
+  """
+  Requires authorization token
+  """
+  addTagToMediaItem(input: AddTagToMediaItemInput!): MediaItem
+  """
+  Requires authorization token
+  """
+  updateMediaItem(media_id: ID, input: MediaItemInput!): MediaItem
+  """
+  Requires authorization token
+  """
+  deleteMediaItem(media_id: ID!): Message
+  """
+  Requires authorization token
+  """
+  deleteTagFromMediaItem(media_id: ID!, tag_name: String!): Message
+}

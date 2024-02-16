@@ -18,4 +18,26 @@ const fetchData = async <T>(url: string,
   return json;
 };
 
-export {fetchData};
+
+const makeQuery = async (query, variables, token) => {
+  const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+  };
+
+  const body = {
+      query,
+      variables,
+  };
+  const options: RequestInit = {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(body),
+  };
+  return await fetchData(
+      import.meta.env.VITE_GRAPHQL_API as string,
+      options,
+  );
+};
+
+export {fetchData, makeQuery};

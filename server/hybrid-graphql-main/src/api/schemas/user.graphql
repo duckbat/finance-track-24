@@ -1,0 +1,39 @@
+scalar DateTime
+
+type User {
+  user_id: ID!
+  username: String!
+  email: String!
+  level_name: String!
+  created_at: DateTime!
+}
+
+type Query {
+  users: [User!]!
+  user(user_id: ID!): User!
+  """
+  Requires authorization token
+  """
+  checkToken: User
+  checkEmail(email: String!): AvailabeResponse!
+  checkUsername(username: String!): AvailabeResponse!
+}
+
+input InputUser {
+  username: String! @constraint(minLength: 3, maxLength: 255)
+  email: String! @constraint(format: "email", maxLength: 255)
+  password: String! @constraint(minLength: 5)
+}
+
+type Mutation {
+  register(input: InputUser): User!
+  login(username: String!, password: String!): LoginResponse!
+  """
+  Requires authorization token
+  """
+  updateUser(input: InputUser): User!
+  """
+  Requires authorization token
+  """
+  deleteUser: Message!
+}
