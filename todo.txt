@@ -4,25 +4,29 @@
     * Connect those components
     * React router
     * Handle all hooks and states
-    * Connect to backend
     * Functionalities of like, comments and share
     * Implement zustand state manager
+    * Connect to backend
 
     - Doing:
     * Prototype an web-application in Figma or other source
-    * Add mock data to it
 
     - Done
+    * Add mock data to it
 
 
 - Server:
     - ToDo:
     * Working backend logic ;P
+    * Upload server
+    * Auth server
+    * Graphql server
+    * Hybrid types
 
     - Doing:
-    * Create database for project
 
     - Done
+    * Create database for project
 
 
 - Overall: 
