@@ -1,6 +1,5 @@
 - Client: 
     - ToDo:
-    * Add mock data to it
     * Build components
     * Connect those components
     * React router
@@ -11,16 +10,17 @@
 
     - Doing:
     * Prototype an web-application in Figma or other source
+    * Add mock data to it
 
     - Done
 
 
 - Server:
     - ToDo:
-    * Create database for project
     * Working backend logic ;P
 
     - Doing:
+    * Create database for project
 
     - Done
 
