@@ -1,17 +1,17 @@
 - Client: 
     - ToDo:
-    * Build components
-    * Connect those components
-    * React router
     * Handle all hooks and states
     * Functionalities of like, comments and share
     * Implement zustand state manager
-    * Connect to backend
 
     - Doing:
+    * Build components
+    * Connect to backend
     * Prototype an web-application in Figma or other source
 
     - Done
+    * Connect those components
+    * React router
     * Add mock data to it
 
 

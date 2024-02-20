@@ -7,16 +7,16 @@ const Example = (props: any) => {
   return (
     <div>
       <h1>This is my name from props: {props.name}</h1>
-      <h2>I am this age:{props.age}</h2>
+      <h2>I am: {props.age} years old</h2>
       <h2>This is my updated name from useState: {name}</h2>
       <h2>This is my +1 age from button below {count}</h2>
-      <hr />
-      <input
+      <input className="border border-indigo-600 mb-4"
         type="text"
         value={name ? name : ''}
         onChange={(e) => setName(e.target.value)}
       />
-      <hr />
+      <hr className='mb-4'/>
+
       <button
         onClick={() => setCount(count + 1)}
         className="rounded-full bg-orange-500 px-4 py-2 font-bold text-white hover:bg-orange-700"
