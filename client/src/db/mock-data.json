@@ -1,0 +1,34 @@
+{
+  "UserLevels": [
+    {"level_id": 1, "level_name": "Moderator"},
+    {"level_id": 2, "level_name": "User"},
+    {"level_id": 3, "level_name": "Guest"}
+  ],
+  "Categories": [
+    {"category_id": 1, "category_name": "Food", "icon": "food_icon.png"},
+    {"category_id": 2, "category_name": "Entertainment", "icon": "entertainment_icon.png"},
+    {"category_id": 3, "category_name": "Transportation", "icon": "transportation_icon.png"}
+  ],
+  "Users": [
+    {"user_id": 1, "username": "user1", "password": "password1", "email": "user1@example.com", "created_at": "2024-02-21 12:00:00", "profile_pic": "profile1.jpg", "level_id": 2},
+    {"user_id": 2, "username": "user2", "password": "password2", "email": "user2@example.com", "created_at": "2024-02-21 12:00:00", "profile_pic": "profile2.jpg", "level_id": 2},
+    {"user_id": 3, "username": "moderator1", "password": "password3", "email": "moderator1@example.com", "created_at": "2024-02-21 12:00:00", "profile_pic": "moderator_profile.jpg", "level_id": 1}
+  ],
+  "Transactions": [
+    {"transaction_id": 1, "user_id": 1, "amount": 50.00, "title": "Dinner with friends", "description": "Had dinner with friends at a restaurant.", "filename": "receipt1.jpg", "filesize": 1024, "media_type": "image/jpeg", "category_id": 1, "created_at": "2024-02-21 12:00:00"},
+    {"transaction_id": 2, "user_id": 2, "amount": 25.00, "title": "Movie tickets", "description": "Bought tickets for a movie night.", "filename": "ticket1.pdf", "filesize": 2048, "media_type": "application/pdf", "category_id": 2, "created_at": "2024-02-21 12:00:00"},
+    {"transaction_id": 3, "user_id": 1, "amount": 20.00, "title": "Bus fare", "description": "Paid for bus fare to commute to work.", "filename": null, "filesize": null, "media_type": null, "category_id": 3, "created_at": "2024-02-21 12:00:00"}
+  ],
+  "Friends": [
+    {"friends_id": 1, "user_id1": 1, "user_id2": 2, "status": "accepted", "created_at": "2024-02-21 12:00:00"},
+    {"friends_id": 2, "user_id1": 2, "user_id2": 3, "status": "pending", "created_at": "2024-02-21 12:00:00"}
+  ],
+  "Comments": [
+    {"comment_id": 1, "transaction_id": 1, "user_id": 2, "comment_text": "Sounds like a fun night out!", "created_at": "2024-02-21 12:00:00"},
+    {"comment_id": 2, "transaction_id": 2, "user_id": 1, "comment_text": "Enjoy the movie!", "created_at": "2024-02-21 12:00:00"}
+  ],
+  "Likes": [
+    {"like_id": 1, "transaction_id": 1, "user_id": 2, "created_at": "2024-02-21 12:00:00"},
+    {"like_id": 2, "transaction_id": 2, "user_id": 1, "created_at": "2024-02-21 12:00:00"}
+  ]
+}

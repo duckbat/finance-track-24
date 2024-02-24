@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Change types in different file
+
 interface Expense {
   title: string;
   amount: number;

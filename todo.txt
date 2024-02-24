@@ -5,14 +5,15 @@
     * Implement zustand state manager
 
     - Doing:
+    * Change DBTypes to own database info
     * Build components
+     * ExpenseItem.tsx // important
     * Connect to backend
     * Prototype an web-application in Figma or other source
 
     - Done
     * Connect those components
     * React router
-    * Add mock data to it
 
 
 - Server:
@@ -27,9 +28,11 @@
 
     - Done
     * Create database for project
+    * Add mock data to database
 
 
 - Overall: 
     - Functionalities ToDo: 
     * Friends add and search
     * Notification center
+    * Public / Friends only privacy setting

@@ -1,4 +1,5 @@
 import Example from '../components/Example';
+import mock from '../db/mock-data.json'
 
 const Profile = () => {
   return (
@@ -14,6 +15,7 @@ const Profile = () => {
         <Example age={21} name={'Khai Dang'} />
       </div>
       <h1>Profile page</h1>
+        <h1>{JSON.stringify(mock)}</h1>
       <h1 style={{marginBottom: '1500px', overflow: 'none', font: 'xxl'}}>
         Empty component
       </h1>

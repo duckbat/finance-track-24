@@ -1,3 +1,4 @@
+// Fix responsive design
 
 import { Link } from 'react-router-dom';
 import {useUserContext} from '../hooks/ContextHooks';

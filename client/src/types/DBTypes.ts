@@ -1,3 +1,5 @@
+// Change to own files types
+
 type UserLevel = {
   level_id: number;
   level_name: 'Admin' | 'User' | 'Guest';
