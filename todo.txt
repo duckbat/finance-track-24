@@ -5,26 +5,26 @@
     * Implement zustand state manager
 
     - Doing:
-    * Change DBTypes to own database info
     * Build components
      * ExpenseItem.tsx // important
     * Connect to backend
     * Prototype an web-application in Figma or other source
 
     - Done
+    * Change DBTypes to own database info
     * Connect those components
     * React router
 
 
 - Server:
     - ToDo:
-    * Working backend logic ;P
+    * Test backend with Postman
     * Upload server
     * Auth server
-    * Graphql server
-    * Hybrid types
 
     - Doing:
+    * Working backend logic ;P
+    * Graphql server
 
     - Done
     * Create database for project
@@ -36,3 +36,7 @@
     * Friends add and search
     * Notification center
     * Public / Friends only privacy setting
+
+
+** Important TODO:
+    - Connect database to the project !!!!!!!!!!!!!!!!!!!!!
