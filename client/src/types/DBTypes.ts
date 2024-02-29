@@ -1,13 +1,13 @@
 // Type definitions for database tables and their relationships
-// "Done"
+// "Convert to GraphQL"
 
 type UserLevel = {
-  level_id: number;
+  level_id: string;
   level_name: 'Admin' | 'User' | 'Guest';
 };
 
 type User = {
-  user_id: number;
+  user_id: string;
   username: string;
   password: string;
   email: string;
@@ -18,8 +18,8 @@ type User = {
 };
 
 type Transaction = {
-  transaction_id: number;
-  user_id: number;
+  transaction_id: string;
+  user_id: string;
   amount: number
   filename: string;
   filesize: number;
@@ -35,37 +35,37 @@ type Transaction = {
 };
 
 type Comment = {
-  comment_id: number;
-  media_id: number;
-  user_id: number;
+  comment_id: string;
+  media_id: string;
+  user_id: string;
   comment_text: string;
   created_at: Date;
 };
 
 type Like = {
-  like_id: number;
-  media_id: number;
-  user_id: number;
+  like_id: string;
+  media_id: string;
+  user_id: string;
   created_at: Date;
 };
 
 type Rating = {
-  rating_id: number;
-  media_id: number;
-  user_id: number;
+  rating_id: string;
+  media_id: string;
+  user_id: string;
   rating_value: number;
   created_at: Date;
 };
 
 type Category = {
-  category_id: number;
+  category_id: string;
   category_name: string;
   icon: string;
 };
 
 type TransactionCategory = {
-  media_id: number;
-  tag_id: number;
+  media_id: string;
+  tag_id: string;
 };
 
 type CategoryResult = TransactionCategory & Category;
@@ -85,7 +85,15 @@ type UserWithNoPassword = Omit<UserWithLevel, 'password'>;
 
 type TokenContent = Pick<User, 'user_id'> & Pick<UserLevel, 'level_name'>;
 
-type TransactionWithOwner = Transaction & Pick<User, 'username'>;
+type TransactionWithOwner = Transaction & {
+  owner: User;
+  category?: Category[];
+  likes?: Like[];
+  rating?: Rating[];
+  likes_count: number;
+  average_rating?: number;
+  comments_count: number;
+};
 
 // for upload server
 type FileInfo = {
