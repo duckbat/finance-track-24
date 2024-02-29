@@ -1,5 +1,5 @@
 import {NavigateFunction, useLocation, useNavigate} from 'react-router-dom';
-import {MediaItemWithOwner} from '../types/DBTypes';
+import {TransactionWithOwner} from '../types/DBTypes';
 import Likes from '../components/Likes';
 import Comments from '../components/Comments';
 
@@ -7,7 +7,7 @@ const Single = () => {
   const {state} = useLocation();
   const navigate: NavigateFunction = useNavigate();
   //console.log('single state', state);
-  const item: MediaItemWithOwner = state;
+  const item: TransactionWithOwner = state;
 
   return (
     <>

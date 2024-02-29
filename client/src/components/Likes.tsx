@@ -1,5 +1,5 @@
 import {useEffect, useReducer} from 'react';
-import {Like, MediaItemWithOwner} from '../types/DBTypes';
+import {Like, TransactionWithOwner} from '../types/DBTypes';
 import {useLike} from '../hooks/apiHooks';
 
 type LikeState = {
