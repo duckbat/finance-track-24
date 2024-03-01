@@ -70,7 +70,7 @@ const useTransaction = () => {
       filesize: file.data.filesize,
       media_type: file.data.media_type,
       owner: {
-        user_id: 0,
+        user_id: '',
         profile_pic: null,
         username: '',
         password: '',
@@ -286,7 +286,7 @@ const useComment = () => {
       Comment & {username: string}
     >(
       comments.map(async (comment) => {
-        const user = await getUserById(comment.user_id);
+        const user = await getUserById(Number(comment.user_id)); // Convert comment.user_id to a number
         return {...comment, username: user.username};
       }),
     );
