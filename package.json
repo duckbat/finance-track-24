@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "flowbite": "^2.3.0",
+    "next-themes": "^0.2.1"
+  }
+}
