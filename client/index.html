@@ -2,13 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <script src="http://localhost:8097"></script>
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DuckBat's Tracker</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <script>
+      if (localStorage.getItem('dark-mode') === 'true' || (!('dark-mode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.querySelector('html').classList.add('dark');
+      } else {
+          document.querySelector('html').classList.remove('dark');
+      }
+      </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script>
+      const lightSwitches = document.querySelectorAll('.light-switch');
+      if (lightSwitches.length > 0) {
+        lightSwitches.forEach((lightSwitch, i) => {
+          if (localStorage.getItem('dark-mode') === 'true') {
+            lightSwitch.checked = true;
+          }
+          lightSwitch.addEventListener('change', () => {
+            const { checked } = lightSwitch;
+            lightSwitches.forEach((el, n) => {
+              if (n !== i) {
+                el.checked = checked;
+              }
+            });
+            if (lightSwitch.checked) {
+              document.documentElement.classList.add('dark');
+              localStorage.setItem('dark-mode', true);
+            } else {
+              document.documentElement.classList.remove('dark');
+              localStorage.setItem('dark-mode', false);
+            }
+          });
+        });
+      }
+      </script>
   </body>
 </html>

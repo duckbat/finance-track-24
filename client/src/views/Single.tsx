@@ -1,7 +1,7 @@
 import {NavigateFunction, useLocation, useNavigate} from 'react-router-dom';
 import {TransactionWithOwner} from '../types/DBTypes';
-import Likes from '../components/Likes';
-import Comments from '../components/Comments';
+// import Likes from '../components/Likes';
+// import Comments from '../components/Comments';
 
 const Single = () => {
   const {state} = useLocation();
@@ -17,7 +17,7 @@ const Single = () => {
       ) : (
         <img src={item.filename} alt={item.title} />
       )}
-      <Likes item={item} />
+      {/* <Likes item={item} /> */}
       <p>{item.description}</p>
       <p>
         Uploaded at: {new Date(item.created_at).toLocaleString('fi-FI')}, by:{' '}
@@ -32,7 +32,7 @@ const Single = () => {
       >
         go back
       </button>
-      <Comments item={item} />
+      {/* <Comments item={item} /> */}
     </>
   );
 };

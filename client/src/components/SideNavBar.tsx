@@ -1,12 +1,11 @@
 // Fix responsive design
 
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {useUserContext} from '../hooks/ContextHooks';
 
-
 const SideNavBar = () => {
-  const {user, handleAutoLogin} = useUserContext()
-  if (!user){
+  const {user, handleAutoLogin} = useUserContext();
+  if (!user) {
     handleAutoLogin();
   }
 
@@ -29,22 +28,65 @@ const SideNavBar = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            clip-rule="evenodd"
-            fill-rule="evenodd"
+            clipRule="evenodd"
+            fillRule="evenodd"
             d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
           ></path>
         </svg>
       </button>
-
       <aside
         id="default-sidebar"
         className="fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform sm:translate-x-0"
         aria-label="Sidebar"
       >
         <div className="h-full overflow-y-auto bg-gray-50 px-3 py-4 dark:bg-gray-800">
+          <div className="ml-3 flex flex-col justify-center">
+            <input
+              type="checkbox"
+              name="light-switch"
+              className="light-switch sr-only"
+            />
+            <label
+              className="relative cursor-pointer p-2"
+              htmlFor="light-switch"
+            >
+              <svg
+                className="dark:hidden"
+                width="16"
+                height="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  className="fill-slate-300"
+                  d="M7 0h2v2H7zM12.88 1.637l1.414 1.415-1.415 1.413-1.413-1.414zM14 7h2v2h-2zM12.95 14.433l-1.414-1.413 1.413-1.415 1.415 1.414zM7 14h2v2H7zM2.98 14.364l-1.413-1.415 1.414-1.414 1.414 1.415zM0 7h2v2H0zM3.05 1.706 4.463 3.12 3.05 4.535 1.636 3.12z"
+                />
+                <path
+                  className="fill-slate-400"
+                  d="M8 4C5.8 4 4 5.8 4 8s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4Z"
+                />
+              </svg>
+              <svg
+                className="hidden dark:block"
+                width="16"
+                height="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  className="fill-slate-400"
+                  d="M6.2 1C3.2 1.8 1 4.6 1 7.9 1 11.8 4.2 15 8.1 15c3.3 0 6-2.2 6.9-5.2C9.7 11.2 4.8 6.3 6.2 1Z"
+                />
+                <path
+                  className="fill-slate-500"
+                  d="M12.5 5a.625.625 0 0 1-.625-.625 1.252 1.252 0 0 0-1.25-1.25.625.625 0 1 1 0-1.25 1.252 1.252 0 0 0 1.25-1.25.625.625 0 1 1 1.25 0c.001.69.56 1.249 1.25 1.25a.625.625 0 1 1 0 1.25c-.69.001-1.249.56-1.25 1.25A.625.625 0 0 1 12.5 5Z"
+                />
+              </svg>
+              <span className="sr-only">Switch to light / dark version</span>
+            </label>
+          </div>
           <ul className="space-y-2 font-medium">
             <li>
-              <Link to ="/"
+              <Link
+                to="/"
                 className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               >
                 <svg
@@ -61,7 +103,8 @@ const SideNavBar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/profile" //Link to profile and own spending
+              <Link
+                to="/profile" //Link to profile and own spending
                 className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               >
                 <svg
@@ -79,7 +122,8 @@ const SideNavBar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/inbox"
+              <Link
+                to="/inbox"
                 className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               >
                 <svg
@@ -95,7 +139,8 @@ const SideNavBar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/friends"
+              <Link
+                to="/friends"
                 className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               >
                 <svg
@@ -111,7 +156,8 @@ const SideNavBar = () => {
               </Link>
             </li>
             <li>
-              <Link to="profile"
+              <Link
+                to="profile"
                 className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               >
                 <svg
@@ -127,7 +173,8 @@ const SideNavBar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/login"
+              <Link
+                to="/login"
                 className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               >
                 <svg
@@ -139,9 +186,9 @@ const SideNavBar = () => {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"
                   />
                 </svg>
@@ -149,7 +196,8 @@ const SideNavBar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/logout"
+              <Link
+                to="/logout"
                 className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               >
                 <svg
