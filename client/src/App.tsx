@@ -1,14 +1,15 @@
+import {useEffect} from 'react';
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom';
 import {UserProvider} from './context/UserContext';
 
-import Feed from './views/Feed';
-import Profile from './views/Profile';
-import Layout from './views/Layout';
 import Example from './components/Example';
+import Feed from './views/Feed';
+import Friends from './views/Friends';
+import Inbox from './views/Inbox';
+import Layout from './views/Layout';
 import Login from './views/Login';
 import Logout from './views/Logout';
-import Inbox from './views/Inbox';
-import Friends from './views/Friends';
+import Profile from './views/Profile';
 import Single from './views/Single';
 
 const App = () => {
