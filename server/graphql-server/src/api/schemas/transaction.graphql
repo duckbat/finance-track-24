@@ -1,0 +1,15 @@
+type Transactions {
+    transaction_id: ID!
+    user_id: ID!
+    amount: INT!
+    title: String!
+    description: String
+    filename: String!
+    filesize: INT!
+    media_type: String!
+    category_id: INT!
+    category: [Category]
+    created_at: String!
+    }
+
+type 

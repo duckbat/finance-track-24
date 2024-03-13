@@ -1,6 +1,0 @@
-Separate upload server for Finance-tracker app with media upload functionalities
-
-TODO:
-
-- Create and add Database to env
-- Take Ilkkas upload-server

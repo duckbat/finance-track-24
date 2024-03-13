@@ -1,0 +1,21 @@
+type Category {
+  Category_id: ID!
+  Category_name: String!
+}
+
+type Message {
+  message: String!
+}
+
+type Query {
+  Categorys: [Category]
+}
+
+input CategoryInput {
+  Category_name: String!
+}
+
+type MuCategoryion {
+  createCategory(input: CategoryInput!): Category
+  deleteCategory(input: ID!): Message
+}

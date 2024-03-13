@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import { TransactionWithOwner } from '../types/DBTypes';
+import { TransactionWithOwner } from '../../../server/types/DBTypes';
 
 const ExpenseRow = (props: {
   item: TransactionWithOwner

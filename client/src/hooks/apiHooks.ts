@@ -7,16 +7,16 @@ import {
   Transaction,
   TransactionWithOwner,
   User,
-} from '../types/DBTypes';
+} from '../../../server/types/DBTypes';
 import {fetchData} from '../lib/functions';
-import {Credentials} from '../types/LocalTypes';
+import {Credentials} from '../../../server/types/LocalTypes';
 import {
   LoginResponse,
   TransactionResponse,
   MessageResponse,
   UploadResponse,
   UserResponse,
-} from '../types/MessageTypes';
+} from '../../../server/types/MessageTypes';
 
 const useTransaction = () => {
   const [transactionArray, setTransactionArray] = useState<
