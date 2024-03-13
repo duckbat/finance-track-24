@@ -48,6 +48,7 @@ const login = async (
       email: user.email,
       created_at: user.created_at,
       level_name: user.level_name,
+      profile_pic: null
     };
 
     const tokenContent: TokenContent = {

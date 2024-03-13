@@ -2,12 +2,12 @@
 // "Convert to GraphQL"
 
 type UserLevel = {
-  level_id: string;
+  level_id: number;
   level_name: 'Admin' | 'User' | 'Guest';
 };
 
 type User = {
-  user_id: string;
+  user_id: number;
   username: string;
   password: string;
   email: string;
@@ -18,8 +18,8 @@ type User = {
 };
 
 type Transaction = {
-  transaction_id: string;
-  user_id: string;
+  transaction_id: number;
+  user_id: number;
   amount: number
   filename: string;
   filesize: number;
@@ -35,37 +35,37 @@ type Transaction = {
 };
 
 type Comment = {
-  comment_id: string;
-  media_id: string;
-  user_id: string;
+  comment_id: number;
+  media_id: number;
+  user_id: number;
   comment_text: string;
   created_at: Date;
 };
 
 type Like = {
-  like_id: string;
-  media_id: string;
-  user_id: string;
+  like_id: number;
+  media_id: number;
+  user_id: number;
   created_at: Date;
 };
 
 type Rating = {
-  rating_id: string;
-  media_id: string;
-  user_id: string;
+  rating_id: number;
+  media_id: number;
+  user_id: number;
   rating_value: number;
   created_at: Date;
 };
 
 type Category = {
-  category_id: string;
-  category_name: string;
+  category_id: number;
+  category_name: number;
   icon: string;
 };
 
 type TransactionCategory = {
-  media_id: string;
-  tag_id: string;
+  media_id: number;
+  tag_id: number;
 };
 
 type CategoryResult = TransactionCategory & Category;
