@@ -1,3 +1,5 @@
-// import someResolver from './someResolver';
+import transactionResolver from './transactionResolver';
+import categoryResolver from './categoryResolver';
+import userResolver from './userResolver';
 
-// export default [someResolver];
+export default [transactionResolver, categoryResolver, userResolver];

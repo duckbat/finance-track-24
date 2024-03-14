@@ -1,1 +1,1 @@
-# Graphql API with Express & TypeScript - starter files
+# Graphql API with Express & TypeScript for Finance-App project

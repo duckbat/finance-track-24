@@ -1,3 +1,4 @@
+//Done
 import {ResultSetHeader, RowDataPacket} from 'mysql2';
 import {Transaction, TokenContent} from '@sharedTypes/DBTypes';
 import promisePool from '../../lib/db';
@@ -31,25 +32,25 @@ const fetchAllTransaction = async (): Promise<Transaction[] | null> => {
   }
 };
 
-// Request a list of Transaction items by tag
-const fetchTransactionByTag = async (tag: string): Promise<Transaction[] | null> => {
+// Request a list of Transaction items by category
+const fetchTransactionByCategory = async (category: string): Promise<Transaction[] | null> => {
   try {
     const [rows] = await promisePool.execute<RowDataPacket[] & Transaction[]>(
       `SELECT Transactions.*,
       CONCAT(?, Transactions.filename) AS filename,
       CONCAT(?, CONCAT(Transactions.filename, "-thumb.png")) AS thumbnail
       FROM Transactions
-      JOIN TransactionTags ON Transactions.Transaction_id = TransactionTags.Transaction_id
-      JOIN Tags ON TransactionTags.tag_id = Tags.tag_id
-      WHERE Tags.tag_name = ?`,
-      [process.env.UPLOAD_URL, process.env.UPLOAD_URL, tag],
+      JOIN TransactionCategories ON Transactions.transaction_id = TransactionCategories.transaction_id
+      JOIN Categories ON TransactionCategories.category_id = Categories.category_id
+      WHERE Categories.category_name = ?`,
+      [process.env.UPLOAD_URL, process.env.UPLOAD_URL, category],
     );
     if (rows.length === 0) {
       return null;
     }
     return rows;
   } catch (e) {
-    console.error('fetchTransactionByTag error', (e as Error).message);
+    console.error('fetchTransactionByCategory error', (e as Error).message);
     throw new Error((e as Error).message);
   }
 };
@@ -93,7 +94,7 @@ const fetchTransactionById = async (id: number): Promise<Transaction | null> => 
                 CONCAT(?, filename) AS filename,
                 CONCAT(?, CONCAT(filename, "-thumb.png")) AS thumbnail
                 FROM Transactions
-                WHERE Transaction_id=?`;
+                WHERE transaction_id=?`;
     const params = [uploadPath, uploadPath, id];
     const [rows] = await promisePool.execute<RowDataPacket[] & Transaction[]>(
       sql,
@@ -112,21 +113,21 @@ const fetchTransactionById = async (id: number): Promise<Transaction | null> => 
 /**
  * Add new Transaction item to database
  *
- * @param {object} Transaction - object containing all information about the new Transaction item
+ * @param {object} transaction - object containing all information about the new Transaction item
  * @returns {object} - object containing id of the inserted Transaction item in db
  * @throws {Error} - error if database query fails
  */
 const postTransaction = async (
-  Transaction: Omit<Transaction, 'Transaction_id' | 'created_at' | 'thumbnail'>,
+  transaction: Omit<Transaction, 'transaction_id' | 'created_at' | 'thumbnail'>,
 ): Promise<Transaction | null> => {
-  const {user_id, filename, filesize, media_type, title, description} = Transaction;
-  const sql = `INSERT INTO Transactions (user_id, filename, filesize, Transaction_type, title, description)
+  const {user_id, filename, filesize, media_type, title, description} = transaction;
+  const sql = `INSERT INTO Transactions (user_id, filename, filesize, media_type, title, description)
                VALUES (?, ?, ?, ?, ?, ?)`;
   const params = [user_id, filename, filesize, media_type, title, description];
   try {
     const result = await promisePool.execute<ResultSetHeader>(sql, params);
     const [rows] = await promisePool.execute<RowDataPacket[] & Transaction[]>(
-      'SELECT * FROM Transactions WHERE Transaction_id = ?',
+      'SELECT * FROM Transactions WHERE transaction_id = ?',
       [result[0].insertId],
     );
     if (rows.length === 0) {
@@ -142,7 +143,7 @@ const postTransaction = async (
 /**
  * Update Transaction item in database
  *
- * @param {object} Transaction - object containing all information about the Transaction item
+ * @param {object} transaction - object containing all information about the Transaction item
  * @param {number} id - id of the Transaction item
  * @returns {object} - object containing id of the updated Transaction item in db
  * @throws {Error} - error if database query fails
@@ -154,7 +155,7 @@ const putTransaction = async (
 ): Promise<TransactionResponse | null> => {
   try {
     const sql = promisePool.format(
-      'UPDATE Transactions SET ? WHERE Transaction_id = ?',
+      'UPDATE Transactions SET ? WHERE transaction_id = ?',
       [Transaction, id],
     );
     const result = await promisePool.execute<ResultSetHeader>(sql);
@@ -163,11 +164,11 @@ const putTransaction = async (
       return null;
     }
 
-    const Transaction = await fetchTransactionById(id);
-    if (!Transaction) {
+    const transaction = await fetchTransactionById(id);
+    if (!transaction) {
       return null;
     }
-    return {message: 'Transaction updated', Transaction: Transaction};
+    return {message: 'Transaction updated', /*possible problem*/transaction: transaction};
   } catch (e) {
     console.error('error', (e as Error).message);
     throw new Error((e as Error).message);
@@ -213,15 +214,15 @@ const deleteTransaction = async (
   try {
     await connection.beginTransaction();
 
-    await connection.execute('DELETE FROM Likes WHERE Transaction_id = ?;', [id]);
+    await connection.execute('DELETE FROM Likes WHERE transaction_id = ?;', [id]);
 
-    await connection.execute('DELETE FROM Comments WHERE Transaction_id = ?;', [id]);
+    await connection.execute('DELETE FROM Comments WHERE transaction_id = ?;', [id]);
 
-    await connection.execute('DELETE FROM Ratings WHERE Transaction_id = ?;', [id]);
+    await connection.execute('DELETE FROM Ratings WHERE transaction_id = ?;', [id]);
 
     // ! user_id in SQL so that only the owner of the Transaction item can delete it
     const [result] = await connection.execute<ResultSetHeader>(
-      'DELETE FROM Transactions WHERE Transaction_id = ? and user_id = ?;',
+      'DELETE FROM Transactions WHERE transaction_id = ? and user_id = ?;',
       [id, user.user_id],
     );
 
@@ -330,44 +331,44 @@ const fetchHighestRatedTransaction = async (): Promise<Transaction | undefined> 
   }
 };
 
-// Attach a tag to a Transaction item
-const postTagToTransaction = async (
-  tag_name: string,
-  Transaction_id: number,
+// Attach a category to a Transaction item
+const postCategoryToTransaction = async (
+  category_name: string,
+  transaction_id: number,
 ): Promise<Transaction | null> => {
   try {
-    let tag_id: number = 0;
-    // check if tag exists (case insensitive)
-    const [tagResult] = await promisePool.execute<RowDataPacket[]>(
-      'SELECT * FROM Tags WHERE tag_name = ?',
-      [tag_name],
+    let category_id: number = 0;
+    // check if category exists (case insensitive)
+    const [CategoryResult] = await promisePool.execute<RowDataPacket[]>(
+      'SELECT * FROM Category WHERE category_name = ?',
+      [category_name],
     );
-    if (tagResult.length === 0) {
-      // if tag does not exist create it
+    if (CategoryResult.length === 0) {
+      // if category does not exist create it
       const [insertResult] = await promisePool.execute<ResultSetHeader>(
-        'INSERT INTO Tags (tag_name) VALUES (?)',
-        [tag_name],
+        'INSERT INTO Category (category_name) VALUES (?)',
+        [category_name],
       );
-      // get tag_id from created tag
+      // get category_id from created category
       if (insertResult.affectedRows === 0) {
         return null;
       }
-      tag_id = insertResult.insertId;
+      category_id = insertResult.insertId;
     } else {
-      // if tag exists get tag_id from the first result
-      tag_id = tagResult[0].tag_id;
+      // if category exists get category_id from the first result
+      category_id = CategoryResult[0].category_id;
     }
-    const [TransactionTagsResult] = await promisePool.execute<ResultSetHeader>(
-      'INSERT INTO TransactionTags (tag_id, Transaction_id) VALUES (?, ?)',
-      [tag_id, Transaction_id],
+    const [TransactionCategoryResult] = await promisePool.execute<ResultSetHeader>(
+      'INSERT INTO TransactionCategories (category_id, transaction_id) VALUES (?, ?)',
+      [category_id, transaction_id],
     );
-    if (TransactionTagsResult.affectedRows === 0) {
+    if (TransactionCategoryResult.affectedRows === 0) {
       return null;
     }
 
-    return await fetchTransactionById(Transaction_id);
+    return await fetchTransactionById(transaction_id);
   } catch (e) {
-    console.error('postTagToTransaction error', (e as Error).message);
+    console.error('postCategoryToTransaction error', (e as Error).message);
     throw new Error((e as Error).message);
   }
 };
@@ -375,7 +376,7 @@ const postTagToTransaction = async (
 export {
   fetchAllTransaction,
   fetchAllTransactionByAppId,
-  fetchTransactionByTag,
+  fetchTransactionByCategory,
   fetchTransactionById,
   postTransaction,
   deleteTransaction,
@@ -383,5 +384,5 @@ export {
   fetchMostCommentedTransaction,
   fetchHighestRatedTransaction,
   putTransaction,
-  postTagToTransaction,
+  postCategoryToTransaction,
 };

@@ -1,9 +1,10 @@
+//Done
 import {ResultSetHeader, RowDataPacket} from 'mysql2';
 import {Category, CategoryResult} from '@sharedTypes/DBTypes';
 import promisePool from '../../lib/db';
 import {MessageResponse} from '@sharedTypes/MessageTypes';
 
-// Request a list of Categorys
+// Request a list of Categories
 const fetchAllCategories = async (): Promise<Category[] | null> => {
   try {
     const [rows] = await promisePool.execute<RowDataPacket[] & Category[]>(
@@ -14,7 +15,7 @@ const fetchAllCategories = async (): Promise<Category[] | null> => {
     }
     return rows;
   } catch (e) {
-    console.error('fetchAllCategorys error', (e as Error).message);
+    console.error('fetchAllCategories error', (e as Error).message);
     throw new Error((e as Error).message);
   }
 };
@@ -25,7 +26,7 @@ const postCategory = async (
 ): Promise<MessageResponse | null> => {
   try {
     const [CategoryResult] = await promisePool.execute<ResultSetHeader>(
-      'INSERT INTO Categorys (Category_name) VALUES (?)',
+      'INSERT INTO Categories (Category_name) VALUES (?)',
       [Category.category_name],
     );
     if (CategoryResult.affectedRows === 0) {
@@ -43,10 +44,10 @@ const postCategory = async (
 const fetchCategoryByMediaId = async (id: number): Promise<CategoryResult[] | null> => {
   try {
     const [rows] = await promisePool.execute<RowDataPacket[] & CategoryResult[]>(
-      `SELECT Categorys.Category_id, Categorys.Category_name, MediaItemCategorys.media_id
-       FROM Categorys
-       JOIN MediaItemCategorys ON Categorys.Category_id = MediaItemCategorys.Category_id
-       WHERE MediaItemCategorys.media_id = ?`,
+      `SELECT Categories.Category_id, Categories.Category_name, MediaItemCategories.media_id
+       FROM Categories
+       JOIN MediaItemCategoies ON Categoies.Category_id = MediaItemCategories.Category_id
+       WHERE MediaItemCategories.media_id = ?`,
       [id],
     );
     if (rows.length === 0) {
@@ -54,7 +55,7 @@ const fetchCategoryByMediaId = async (id: number): Promise<CategoryResult[] | nu
     }
     return rows;
   } catch (e) {
-    console.error('fetchCategorysByMediaId error', (e as Error).message);
+    console.error('fetchCategoriesByMediaId error', (e as Error).message);
     throw new Error((e as Error).message);
   }
 };
@@ -66,7 +67,7 @@ const deleteCategory = async (id: number): Promise<MessageResponse | null> => {
     await connection.beginTransaction();
 
     const [mediaItemCategoryResult] = await connection.execute<ResultSetHeader>(
-      'DELETE FROM MediaItemCategorys WHERE Category_id = ?',
+      'DELETE FROM MediaItemCategories WHERE Category_id = ?',
       [id],
     );
 
@@ -75,7 +76,7 @@ const deleteCategory = async (id: number): Promise<MessageResponse | null> => {
     }
 
     const [CategoryResult] = await connection.execute<ResultSetHeader>(
-      'DELETE FROM Categorys WHERE Category_id = ?',
+      'DELETE FROM Categories WHERE Category_id = ?',
       [id],
     );
 
