@@ -1,6 +1,6 @@
 /* eslint-disable node/no-unpublished-import */
 import app from '../src/app';
-import {UserWithLevel} from '../src/types/DBTypes';
+import {UserWithLevel} from '@sharedTypes/DBTypes';
 import {getFound, getNotFound} from './serverFunctions';
 import {
   createUser,

@@ -1,10 +1,10 @@
-//done
+//Done
 import {User, UserWithNoPassword} from '@sharedTypes/DBTypes';
 import {fetchData} from '../../lib/functions';
 import {LoginResponse, UserResponse} from '@sharedTypes/MessageTypes';
 
 export default {
-  MediaItem: {
+  Transaction: {
     owner: async (parent: {user_id: string}) => {
       const user = await fetchData<UserWithNoPassword>(
         process.env.AUTH_SERVER + '/users/' + parent.user_id,

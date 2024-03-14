@@ -1,15 +1,52 @@
-type Transactions {
+type Transaction {
     transaction_id: ID!
     user_id: ID!
-    amount: INT!
+    amount: Int!
     title: String!
     description: String
+    thumbnail: String!
     filename: String!
-    filesize: INT!
+    filesize: Int!
     media_type: String!
-    category_id: INT!
+    category_id: Int!
     category: [Category]
     created_at: String!
-    }
+    owner: User
+}
 
-type 
+type TransactionResponse {
+    message: String!
+    transaction: Transaction!
+}
+
+type Query {
+    transactions: [Transaction]
+    transaction(transaction_id: ID!): Transaction
+    transactionsByCategory(category: String!): [Transaction]
+}
+
+input TransactionInput {
+    filename: String!
+    filesize: Int!
+    amount: Int!
+    media_type: String!
+    title: String!
+    description: String
+}
+
+input TransactionUpdateInput {
+    title: String
+    description: String
+    amount: Int
+}
+
+input AddCategoryToTransactionInput {
+    transaction_id: ID!
+    category_name: String!
+}
+
+type Mutation {
+    createTransaction(input: TransactionInput!): Transaction
+    addCategoryToTransaction(input: AddCategoryToTransactionInput!): Transaction
+    updateTransaction(input: TransactionUpdateInput!, transaction_id: ID!): TransactionResponse
+}

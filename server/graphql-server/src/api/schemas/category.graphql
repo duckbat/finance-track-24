@@ -1,6 +1,6 @@
 type Category {
-  Category_id: ID!
-  Category_name: String!
+  category_id: ID!
+  category_name: String!
 }
 
 type Message {
@@ -8,14 +8,14 @@ type Message {
 }
 
 type Query {
-  Categorys: [Category]
+  categories: [Category]
 }
 
 input CategoryInput {
-  Category_name: String!
+  category_name: String!
 }
 
-type MuCategoryion {
+type Mutation {
   createCategory(input: CategoryInput!): Category
   deleteCategory(input: ID!): Message
 }

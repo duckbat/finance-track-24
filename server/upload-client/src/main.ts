@@ -89,8 +89,8 @@ const uploadFile = async (): Promise<UploadResponse> => {
 // TODO funtion to post a file to the API
 const postFile = async (uploadResponse: UploadResponse) => {
   const query = `
-  mutation CreateMediaItem($input: MediaItemInput!) {
-    createMediaItem(input: $input) {
+  mutation CreateTransaction($input: TransactionInput!) {
+    createTransaction(input: $input) {
       title
     }
   }

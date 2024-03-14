@@ -5,17 +5,17 @@ USE FinanceTrackApp;
 
 -- Create the tables
 
--- Userlevel table (Moderator, User, Guest, etc.)
-CREATE TABLE UserLevels (
-    level_id INT AUTO_INCREMENT PRIMARY KEY,
-    level_name VARCHAR(50) NOT NULL
-);
-
 -- Category table
 CREATE TABLE Categories (
     category_id INT AUTO_INCREMENT PRIMARY KEY,
     category_name VARCHAR(50) NOT NULL,
     icon VARCHAR(255) NOT NULL -- Store icon information
+);
+
+-- Userlevel table (Moderator, User, Guest, etc.)
+CREATE TABLE UserLevels (
+    level_id INT AUTO_INCREMENT PRIMARY KEY,
+    level_name VARCHAR(50) NOT NULL
 );
 
 -- Users table
@@ -26,8 +26,8 @@ CREATE TABLE Users (
     email VARCHAR(255) NOT NULL UNIQUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     profile_pic VARCHAR(255),
-    level_id INT,
-    FOREIGN KEY (level_id) REFERENCES UserLevels(level_id)
+    user_level_id INT,
+    FOREIGN KEY (user_level_id) REFERENCES UserLevels(level_id)
 );
 
 -- Transactions table
@@ -78,44 +78,72 @@ CREATE TABLE Likes (
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 
+-- Ratings table
+CREATE TABLE Ratings (
+    rating_id INT AUTO_INCREMENT PRIMARY KEY,
+    transaction_id INT NOT NULL,
+    user_id INT NOT NULL,
+    rating_value INT NOT NULL CHECK (rating_value BETWEEN 1 AND 5),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (transaction_id) REFERENCES Transactions(transaction_id),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
 
--- Insert data into the tables
+-- TransactionCategories table
+CREATE TABLE TransactionCategories (
+    transaction_id INT NOT NULL,
+    category_id INT NOT NULL,
+    PRIMARY KEY (transaction_id, category_id),
+    FOREIGN KEY (transaction_id) REFERENCES Transactions(transaction_id),
+    FOREIGN KEY (category_id) REFERENCES Categories(category_id)
+);
 
--- Insert sample data into UserLevels table
+
+-- ADD mock data
+
+-- Inserting data into UserLevels table
 INSERT INTO UserLevels (level_name) VALUES
 ('Moderator'),
 ('User'),
 ('Guest');
 
--- Insert sample data into Categories table
+-- Inserting data into Users table
+INSERT INTO Users (username, password, email, profile_pic, user_level_id) VALUES
+('john_doe', 'password123', 'john@example.com', 'profile_pic1.jpg', 2),
+('jane_smith', 'abc123', 'jane@example.com', 'profile_pic2.jpg', 2),
+('guest_user', 'guestpass', 'guest@example.com', NULL, 3);
+
+-- Inserting data into Categories table
 INSERT INTO Categories (category_name, icon) VALUES
-('Food', 'food_icon.png'),
-('Entertainment', 'entertainment_icon.png'),
-('Transportation', 'transportation_icon.png');
+('Groceries', 'groceries_icon.png'),
+('Entertainment', 'entertainment_icon.png');
 
--- Insert sample data into Users table
-INSERT INTO Users (username, password, email, profile_pic, level_id) VALUES
-('user1', 'password1', 'user1@example.com', 'profile1.jpg', 2),
-('user2', 'password2', 'user2@example.com', 'profile2.jpg', 2),
-('moderator1', 'password3', 'moderator1@example.com', 'moderator_profile.jpg', 1);
+-- Inserting data into Transactions table
+INSERT INTO Transactions (user_id, amount, title, description, category_id) VALUES
+(1, 50.00, 'Grocery Shopping', 'Bought groceries for the week', 1),
+(2, 25.00, 'Movie Night', 'Watched a movie with friends', 2);
 
--- Insert sample data into Transactions table
-INSERT INTO Transactions (user_id, amount, title, description, filename, filesize, media_type, category_id) VALUES
-(1, 50.00, 'Dinner with friends', 'Had dinner with friends at a restaurant.', 'receipt1.jpg', 1024, 'image/jpeg', 1),
-(2, 25.00, 'Movie tickets', 'Bought tickets for a movie night.', 'ticket1.pdf', 2048, 'application/pdf', 2),
-(1, 20.00, 'Bus fare', 'Paid for bus fare to commute to work.', NULL, NULL, NULL, 3);
-
--- Insert sample data into Friends table
+-- Inserting data into Friends table
 INSERT INTO Friends (user_id1, user_id2, status) VALUES
 (1, 2, 'accepted'),
-(2, 3, 'pending');
+(1, 3, 'pending');
 
--- Insert sample data into Comments table
+-- Inserting data into Comments table
 INSERT INTO Comments (transaction_id, user_id, comment_text) VALUES
-(1, 2, 'Sounds like a fun night out!'),
-(2, 1, 'Enjoy the movie!');
+(1, 2, 'Nice haul!'),
+(2, 1, 'It was a great movie!');
 
--- Insert sample data into Likes table
+-- Inserting data into Likes table
 INSERT INTO Likes (transaction_id, user_id) VALUES
 (1, 2),
 (2, 1);
+
+-- Inserting data into Ratings table
+INSERT INTO Ratings (transaction_id, user_id, rating_value) VALUES
+(2, 1, 4),
+(2, 2, 5);
+
+-- Inserting data into TransactionCategories table
+INSERT INTO TransactionCategories (transaction_id, category_id) VALUES
+(1, 1),
+(2, 2);

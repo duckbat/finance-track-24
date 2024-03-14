@@ -36,7 +36,7 @@ type Transaction = {
 
 type Comment = {
   comment_id: number;
-  media_id: number;
+  transaction_id: number;
   user_id: number;
   comment_text: string;
   created_at: Date;
@@ -44,14 +44,14 @@ type Comment = {
 
 type Like = {
   like_id: number;
-  media_id: number;
+  transaction_id: number;
   user_id: number;
   created_at: Date;
 };
 
 type Rating = {
   rating_id: number;
-  media_id: number;
+  transaction_id: number;
   user_id: number;
   rating_value: number;
   created_at: Date;
@@ -64,7 +64,7 @@ type Category = {
 };
 
 type TransactionCategory = {
-  media_id: number;
+  transaction_id: number;
   tag_id: number;
 };
 

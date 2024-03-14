@@ -120,10 +120,10 @@ const fetchTransactionById = async (id: number): Promise<Transaction | null> => 
 const postTransaction = async (
   transaction: Omit<Transaction, 'transaction_id' | 'created_at' | 'thumbnail'>,
 ): Promise<Transaction | null> => {
-  const {user_id, filename, filesize, media_type, title, description} = transaction;
-  const sql = `INSERT INTO Transactions (user_id, filename, filesize, media_type, title, description)
+  const {user_id, amount, filename, filesize, media_type, title, description} = transaction;
+  const sql = `INSERT INTO Transactions (user_id, amount, filename, filesize, media_type, title, description)
                VALUES (?, ?, ?, ?, ?, ?)`;
-  const params = [user_id, filename, filesize, media_type, title, description];
+  const params = [user_id, amount, filename, filesize, media_type, title, description];
   try {
     const result = await promisePool.execute<ResultSetHeader>(sql, params);
     const [rows] = await promisePool.execute<RowDataPacket[] & Transaction[]>(
@@ -340,13 +340,13 @@ const postCategoryToTransaction = async (
     let category_id: number = 0;
     // check if category exists (case insensitive)
     const [CategoryResult] = await promisePool.execute<RowDataPacket[]>(
-      'SELECT * FROM Category WHERE category_name = ?',
+      'SELECT * FROM Categories WHERE category_name = ?',
       [category_name],
     );
     if (CategoryResult.length === 0) {
       // if category does not exist create it
       const [insertResult] = await promisePool.execute<ResultSetHeader>(
-        'INSERT INTO Category (category_name) VALUES (?)',
+        'INSERT INTO Categories (category_name) VALUES (?)',
         [category_name],
       );
       // get category_id from created category
