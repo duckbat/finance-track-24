@@ -13,7 +13,6 @@ type User = {
   email: string;
   user_level_id: number;
   profile_pic: string | null;
-  level_id ?: number;
   created_at: Date | string;
 };
 
@@ -27,11 +26,6 @@ type Transaction = {
   title: string;
   description: string | null;
   created_at: Date | string;
-  owner: User;
-  category?: Category[];
-  likes?: Like[];
-  likes_count: number;
-  comments_count: number;
 };
 
 type Comment = {
@@ -87,7 +81,6 @@ type TokenContent = Pick<User, 'user_id'> & Pick<UserLevel, 'level_name'>;
 
 type TransactionWithOwner = Transaction & {
   owner: User;
-  username: string;
   category?: Category[];
   likes?: Like[];
   rating?: Rating[];

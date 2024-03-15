@@ -1,5 +1,3 @@
-// Type definitions for the response from the server
-// "Done"
 import {Transaction, UserWithNoPassword} from './DBTypes';
 
 type MessageResponse = {
@@ -11,7 +9,7 @@ type ErrorResponse = MessageResponse & {
 };
 
 type TransactionResponse = MessageResponse & {
-  media: Transaction | Transaction[];
+  transaction: Transaction | Transaction[];
 };
 
 // for auth server
@@ -27,6 +25,14 @@ type UserResponse = MessageResponse & {
 
 type UserDeleteResponse = MessageResponse & {
   user: {user_id: number};
+};
+
+type AvailableResponse = Partial<MessageResponse> & {
+  available?: boolean;
+};
+
+type BooleanResponse = MessageResponse & {
+  success: boolean;
 };
 
 // for upload server
@@ -46,4 +52,6 @@ export type {
   UploadResponse,
   UserResponse,
   UserDeleteResponse,
+  AvailableResponse,
+  BooleanResponse,
 };

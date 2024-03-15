@@ -10,21 +10,21 @@ import {fetchData, makeQuery} from '../lib/functions';
 import {Credentials, GraphQLResponse} from '../types/LocalTypes';
 import {
   LoginResponse,
-  MediaResponse,
+  TransactionResponse,
   MessageResponse,
   UploadResponse,
   UserResponse,
 } from '../types/MessageTypes';
 import {useUpdateContext} from './ContextHooks';
 
-const useMedia = () => {
-  const [mediaArray, setMediaArray] = useState<MediaItemWithOwner[]>([]);
+const useTransaction = () => {
+  const [mediaArray, setMediaArray] = useState<TransactionWithOwner[]>([]);
   const {update} = useUpdateContext();
 
   const getMedia = async () => {
     try {
       const query = `
-      query MediaItems {
+      query Transactions {
         mediaItems {
           media_id
           user_id

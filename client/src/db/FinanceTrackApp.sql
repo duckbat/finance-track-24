@@ -8,8 +8,7 @@ USE FinanceTrackApp;
 -- Category table
 CREATE TABLE Categories (
     category_id INT AUTO_INCREMENT PRIMARY KEY,
-    category_name VARCHAR(50) NOT NULL,
-    icon VARCHAR(255) NOT NULL -- Store icon information
+    category_name VARCHAR(50) NOT NULL
 );
 
 -- Userlevel table (Moderator, User, Guest, etc.)
@@ -114,9 +113,9 @@ INSERT INTO Users (username, password, email, profile_pic, user_level_id) VALUES
 ('guest_user', 'guestpass', 'guest@example.com', NULL, 3);
 
 -- Inserting data into Categories table
-INSERT INTO Categories (category_name, icon) VALUES
-('Groceries', 'groceries_icon.png'),
-('Entertainment', 'entertainment_icon.png');
+INSERT INTO Categories (category_name) VALUES
+('Groceries'),
+('Entertainment');
 
 -- Inserting data into Transactions table
 INSERT INTO Transactions (user_id, amount, title, description, category_id) VALUES

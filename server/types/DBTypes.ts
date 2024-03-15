@@ -60,7 +60,6 @@ type Rating = {
 type Category = {
   category_id: number;
   category_name: number;
-  icon: string;
 };
 
 type TransactionCategory = {

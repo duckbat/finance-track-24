@@ -20,7 +20,7 @@ Share your spendings with your friends and let them see how fast your money diss
 ### Database diagram image
 ![DBdiagram](img/FinanceTrackAppDB.jpeg)
 
-### Functionalities of the application
+## Functionalities of the application
 #### Main functionalities
 - Login, logout
 - 

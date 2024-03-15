@@ -1,4 +1,3 @@
-//Done
 import {useState} from 'react';
 
 const useForm = <T>(callback: () => void, initState: T) => {
