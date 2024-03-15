@@ -219,7 +219,7 @@ const useLike = () => {
   };
 
   const getUserLike = async (transaction_id: number, token: string) => {
-    // Send a GET request to /likes/bymedia/user/:transaction_id to get the user's like on the media.
+    // Send a GET request to /likes/bytransaction/user/:transaction_id to get the user's like on the transaction.
     const options: RequestInit = {
       method: 'GET',
       headers: {
