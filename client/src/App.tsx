@@ -1,10 +1,9 @@
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom';
-import {UserProvider} from './context/UserContext';
+import {UserProvider} from './contexts/UserContext';
 
 import Example from './components/Example';
 import Feed from './views/Feed';
 import Friends from './views/Friends';
-import Inbox from './views/Inbox';
 import Layout from './views/Layout';
 import Login from './views/Login';
 import Logout from './views/Logout';
@@ -19,7 +18,6 @@ const App = () => {
           <Route element={<Layout />}>
             <Route path="/" element={<Feed />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/inbox" element={<Inbox />} />
             <Route path="/friends" element={<Friends />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />

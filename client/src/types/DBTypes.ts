@@ -13,7 +13,6 @@ type User = {
   email: string;
   user_level_id: number;
   profile_pic: string | null;
-  level_id ?: number;
   created_at: Date | string;
 };
 
@@ -27,11 +26,6 @@ type Transaction = {
   title: string;
   description: string | null;
   created_at: Date | string;
-  owner: User;
-  category?: Category[];
-  likes?: Like[];
-  likes_count: number;
-  comments_count: number;
 };
 
 type Comment = {
@@ -77,6 +71,21 @@ type UploadResult = {
   };
 };
 
+type MostLikedTransaction = Pick<
+  Transaction,
+  | 'transaction_id'
+  | 'filename'
+  | 'filesize'
+  | 'media_type'
+  | 'title'
+  | 'amount'
+  | 'description'
+  | 'created_at'
+> &
+  Pick<User, 'user_id' | 'username' | 'email' | 'created_at'> & {
+    likes_count: bigint;
+  };
+
 // type gymnastics to get rid of user_level_id from User type and replace it with level_name from UserLevel type
 type UserWithLevel = Omit<User, 'user_level_id'> &
   Pick<UserLevel, 'level_name'>;
@@ -87,7 +96,6 @@ type TokenContent = Pick<User, 'user_id'> & Pick<UserLevel, 'level_name'>;
 
 type TransactionWithOwner = Transaction & {
   owner: User;
-  username: string;
   category?: Category[];
   likes?: Like[];
   rating?: Rating[];
@@ -117,5 +125,6 @@ export type {
   UserWithNoPassword,
   TokenContent,
   TransactionWithOwner,
+  MostLikedTransaction,
   FileInfo,
 };
