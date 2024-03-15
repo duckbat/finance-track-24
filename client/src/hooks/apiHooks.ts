@@ -32,7 +32,10 @@ const useTransaction = () => {
           );
           const itemWithOwner: TransactionWithOwner = {
             ...item,
+            owner: owner,
             username: owner.username,
+            likes_count: 0,
+            comments_count: 0,
           };
           return itemWithOwner;
         }),
@@ -65,7 +68,7 @@ const useTransaction = () => {
       filename: file.data.filename,
       filesize: file.data.filesize,
       media_type: file.data.media_type,
-      amount: 0
+      amount: 0,
     };
 
     // TODO: post the data to Transaction API and get the data as TransactionResponse

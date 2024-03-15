@@ -94,7 +94,7 @@ type UserWithNoPassword = Omit<UserWithLevel, 'password'>;
 
 type TokenContent = Pick<User, 'user_id'> & Pick<UserLevel, 'level_name'>;
 
-type TransactionWithOwner = Transaction & {
+type TransactionWithOwner = Transaction & Pick<User, 'username'> & {
   owner: User;
   category?: Category[];
   likes?: Like[];
