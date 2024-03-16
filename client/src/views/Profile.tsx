@@ -1,7 +1,8 @@
-import Example from '../components/Example';
-import mock from '../db/mock-data.json'
+import { useUserContext } from '../hooks/ContextHooks';
 
 const Profile = () => {
+  const {user} = useUserContext();
+
   return (
     <>
       <div className="mb-8 rounded-lg border-2 border-dashed border-gray-200 p-4 dark:border-gray-600">
@@ -10,15 +11,17 @@ const Profile = () => {
           className="h-20"
           alt="DuckBat Logo"
         />
-        <h1 className="text-align:right font-sans text-4xl">Duck Home</h1>
-        <h1>Profile Page</h1>
-        <Example age={21} name={'Khai Dang'} />
-      </div>
-      <h1>Profile page</h1>
-        <h1>{JSON.stringify(mock)}</h1>
-      <h1 style={{marginBottom: '1500px', overflow: 'none', font: 'xxl'}}>
-        Empty component
-      </h1>
+        <h1>Hello shit</h1>
+        {user && (
+          <>
+          <h1 className="text-align:right font-sans text-4xl">Welcome: {user.username}</h1>
+          <p>Your Email: {user.email}</p>
+          <p>Created at: {new Date(user.created_at).toLocaleString('fi-FI')}</p>
+          </>
+        )}
+        </div>
+          <h1 style={{marginBottom: '1500px', overflow: 'none', font: 'xxl'}}>
+        </h1>
     </>
   );
 };

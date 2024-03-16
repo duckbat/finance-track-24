@@ -1,6 +1,5 @@
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom';
 import {UserProvider} from './contexts/UserContext';
-
 import Example from './components/Example';
 import Feed from './views/Feed';
 import Friends from './views/Friends';

@@ -1,5 +1,6 @@
 import {useState} from 'react';
-import {useUser} from '../hooks/apiHooks';
+// import {useUser} from '../hooks/apiHooks';
+import {useUser} from '../hooks/graphQLHooks';
 import {useForm} from '../hooks/formHooks';
 
 const RegisterForm = () => {

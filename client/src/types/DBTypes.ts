@@ -20,6 +20,7 @@ type Transaction = {
   transaction_id: string;
   user_id: string;
   amount: number
+  thumbnail: string;
   filename: string;
   filesize: number;
   media_type: string;
