@@ -1,5 +1,4 @@
 // Done
-
 const Footer = () => {
   return (
     <div>
@@ -27,17 +26,17 @@ const Footer = () => {
               </li>
               <li>
                 <a href="#" className="me-4 hover:underline md:me-6">
-                  Privacy Policy
+                  Give Feedback
                 </a>
               </li>
               <li>
                 <a href="#" className="me-4 hover:underline md:me-6">
-                  Licensing
+                  GitHub
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:underline">
-                  Contact
+                  LinkedIn
                 </a>
               </li>
             </ul>

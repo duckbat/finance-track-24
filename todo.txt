@@ -1,16 +1,24 @@
 - Client: 
     - ToDo:
+    * Create About page
+    * Create Register page
+    * Create Feedback page
+    * Make successful login direct to profile and clean input (change UI)
+    * Make successful register go to login page (change UI)
     * Handle all hooks and states
-    * Functionalities of like, comments and share
     * Implement zustand state manager
+    * Functionalities of like, comments and share
+    * Create main page
+    * Create "AddTransaction" button and page
+    * 
 
     - Doing:
-    * Build components
-     * ExpenseItem.tsx // important
-    * Connect to backend
-    * Prototype an web-application in Figma or other source
+    * Build components:
+     * TransacstionItem.tsx // important
 
     - Done
+    * Connect to backend
+    * Prototype an web-application in Figma or other source
     * Change DBTypes to own database info
     * Connect those components
     * React router
@@ -18,15 +26,15 @@
 
 - Server:
     - ToDo:
-    * Test backend with Postman
-    * Upload server
-    * Auth server
 
     - Doing:
-    * Working backend logic ;P
-    * Graphql server
 
     - Done
+    * Upload server
+    * Auth server
+    * Working backend logic ;P
+    * Graphql server
+    * Test backend with Postman
     * Create database for project
     * Add mock data to database
 

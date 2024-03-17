@@ -1,18 +1,26 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 import { useUserContext } from '../hooks/ContextHooks';
+import { useNavigate } from 'react-router-dom';
 
 const Logout = () => {
-  const {handleLogout} = useUserContext();
+  const navigate = useNavigate();
+  const { handleLogout } = useUserContext();
 
   useEffect(() => {
-    handleLogout();
-  }, []);
-  console.log("logout called!")
+    const logout = async () => {
+      await handleLogout();
+      // Redirect to the login page after logout
+      navigate('/logoutview');
+    };
+
+    logout();
+  }, [handleLogout, navigate]);
+
+  console.log("logout called!");
 
   return (
-    <p>Log out!</p>
-    )
-}
+    <p>Logging out...</p>
+  );
+};
 
 export default Logout;

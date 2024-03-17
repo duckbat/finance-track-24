@@ -1,7 +1,15 @@
 import { useUserContext } from '../hooks/ContextHooks';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
-  const {user} = useUserContext();
+  const { user } = useUserContext();
+  const navigate = useNavigate(); // Access the navigate function
+
+  // Redirect to the login page if user is not logged in
+  if (!user) {
+    navigate('/login');
+    return null; // Prevent rendering the rest of the component
+  }
 
   return (
     <>
@@ -11,16 +19,11 @@ const Profile = () => {
           className="h-20"
           alt="DuckBat Logo"
         />
-        {user && (
-          <>
-          <h1 className="text-align:right font-sans text-4xl pb-2 ">Welcome: {user.username}</h1>
-          <p>Your Email: {user.email}</p>
-          <p>Account was created at: {new Date(user.created_at).toLocaleString('fi-FI')}</p>
-          </>
-        )}
-        </div>
-          <h1 style={{marginBottom: '1500px', overflow: 'none', font: 'xxl'}}>
-        </h1>
+        <h1 className="text-align:right font-sans text-4xl pb-2">Welcome: {user.username}</h1>
+        <p>Your Email: {user.email}</p>
+        <p>Account was created at: {new Date(user.created_at).toLocaleString('fi-FI')}</p>
+      </div>
+      <h1 style={{ marginBottom: '1080px', overflow: 'none', font: 'xxl' }}></h1>
     </>
   );
 };
