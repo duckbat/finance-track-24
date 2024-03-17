@@ -22,8 +22,12 @@ Share your spendings with your friends and let them see how fast your money diss
 
 ## Functionalities of the application
 #### Main functionalities
-- Login, logout
-- 
+- Register
+- Login / Logout
+- View Feed
+- Create Expense / Transaction
+- Post Expense / Transaction
+- Modify Expense / Transaction
 
 
 #### Additional functionalities
@@ -35,3 +39,6 @@ Share your spendings with your friends and let them see how fast your money diss
 
 
 ## References / Graphic inspos
+### React / Tailwindcss component libraries
+- Material Tailwindcss
+- Flowbite Tailwindcss 

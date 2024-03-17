@@ -62,7 +62,7 @@ const postCategory = async (category: Omit<Category, 'category_id'>): Promise<Ca
 const fetchCategoriesByTransactionId = async (id: number): Promise<CategoryResult[] | null> => {
   try {
     const [rows] = await promisePool.execute<RowDataPacket[] & CategoryResult[]>(
-      `SELECT Categories.category_id, Categories.category_name, TransactionCategories.media_id
+      `SELECT Categories.category_id, Categories.category_name, TransactionCategories.transaction_id
        FROM Categories
        JOIN TransactionCategories ON Categories.category_id = TransactionCategories.category_id
        WHERE TransactionCategories.category_id = ?`,
