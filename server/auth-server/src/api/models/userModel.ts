@@ -191,7 +191,7 @@ const deleteUser = async (id: number): Promise<UserDeleteResponse | null> => {
       [id]
     );
     await connection.execute(
-      'DELETE FROM TransactionCategory WHERE transaction_id IN (SELECT transaction_id FROM Transactions WHERE user_id = ?);',
+      'DELETE FROM TransactionCategories WHERE transaction_id IN (SELECT transaction_id FROM Transactions WHERE user_id = ?);',
       [id]
     );
     await connection.execute('DELETE FROM Transactions WHERE user_id = ?;', [id]);

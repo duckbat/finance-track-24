@@ -11,12 +11,11 @@ const Profile = () => {
           className="h-20"
           alt="DuckBat Logo"
         />
-        <h1>Hello shit</h1>
         {user && (
           <>
-          <h1 className="text-align:right font-sans text-4xl">Welcome: {user.username}</h1>
+          <h1 className="text-align:right font-sans text-4xl pb-2 ">Welcome: {user.username}</h1>
           <p>Your Email: {user.email}</p>
-          <p>Created at: {new Date(user.created_at).toLocaleString('fi-FI')}</p>
+          <p>Account was created at: {new Date(user.created_at).toLocaleString('fi-FI')}</p>
           </>
         )}
         </div>

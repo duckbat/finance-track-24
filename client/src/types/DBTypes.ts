@@ -60,7 +60,7 @@ type Category = {
 
 type TransactionCategory = {
   transaction_id: string;
-  tag_id: string;
+  category_id: string;
 };
 
 type CategoryResult = TransactionCategory & Category;
