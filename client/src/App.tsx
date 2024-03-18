@@ -9,7 +9,7 @@ import Login from './views/Login';
 import Logout from './views/Logout';
 import Profile from './views/Profile';
 import Single from './views/Single';
-import Upload from './views/Upload';
+// import Upload from './views/Upload';
 import About from './views/About';
 import LogoutView from './views/LogoutView';
 import {UpdateProvider} from './contexts/UpdateContext';
@@ -37,14 +37,14 @@ const App = () => {
               <Route path="/single" element={<Single />} />
               <Route path="/about" element={<About />} />
               <Route path="/logoutview" element={<LogoutView />} />
-              <Route
+              {/* <Route
                 path="/upload"
                 element={
                   <ProtectedRoute>
                     <Upload />
                   </ProtectedRoute>
                 }
-              />
+              /> */}
             </Route>
           </Routes>
         </UpdateProvider>

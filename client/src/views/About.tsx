@@ -45,8 +45,9 @@ const About = () => {
             </Link>
           </div>
         </p>
+        <h1>If you want to leave a feedback about the website: </h1>
       </div>
-      <h1 style={{marginBottom: '1080px', overflow: 'none', font: 'xxl'}}></h1>
+      <h1 style={{marginBottom: '50vh', overflow: 'none', font: 'xxl'}}></h1>
     </>
   );
 };

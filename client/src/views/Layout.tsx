@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <>
       <div suppressHydrationWarning>
-        <div className="dark:bg p-4 sm:ml-64 dark:bg-gray-900 dark:text-white">
+        <div className="dark:bg p-4 sm:ml-64 dark:bg-gray-900 dark:text-white ">
             <SideNavBar />
           <main>
             <Outlet></Outlet>
