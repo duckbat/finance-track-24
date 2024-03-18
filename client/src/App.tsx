@@ -12,39 +12,42 @@ import Single from './views/Single';
 import Upload from './views/Upload';
 import About from './views/About';
 import LogoutView from './views/LogoutView';
+import {UpdateProvider} from './contexts/UpdateContext';
 
 const App = () => {
   return (
     <Router basename={import.meta.env.BASE_URL}>
       <UserProvider>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Feed />} />
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="/register" element= {<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<Logout />} />
-            <Route path="/example" element={<Example />} />
-            <Route path="/single" element={<Single />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/logoutview" element={<LogoutView />} />
-            <Route
-              path="/upload"
-              element={
-                <ProtectedRoute>
-                  <Upload />
-                </ProtectedRoute>
-              }
-            />
-          </Route>
-        </Routes>
+        <UpdateProvider>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<Feed />} />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/logout" element={<Logout />} />
+              <Route path="/example" element={<Example />} />
+              <Route path="/single" element={<Single />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/logoutview" element={<LogoutView />} />
+              <Route
+                path="/upload"
+                element={
+                  <ProtectedRoute>
+                    <Upload />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+          </Routes>
+        </UpdateProvider>
       </UserProvider>
     </Router>
   );

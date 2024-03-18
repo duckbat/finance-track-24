@@ -92,7 +92,7 @@ const RegisterForm = () => {
           </div>
         )}
         <div className="flex w-4/5 justify-end">
-          <button className="bg-slate-700 m-3 w-1/3 rounded-md p-3" type="submit">
+          <button className="bg-slate-700 m-3 w-1/3 rounded-md p-3 text-white" type="submit">
             Register
           </button>
           <p>

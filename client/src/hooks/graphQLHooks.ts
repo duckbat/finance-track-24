@@ -40,8 +40,6 @@ const useTransaction = () => {
           title
           description
           created_at
-          comments_count
-          average_rating
         }
       }
     `;
