@@ -1,22 +1,17 @@
 - Client: 
     - ToDo:
-    * Create About page
-    * Create Register page
-    * Create Feedback page
-    * Make successful login direct to profile and clean input (change UI)
-    * Make successful register go to login page (change UI)
-    * Handle all hooks and states
-    * Implement zustand state manager
     * Functionalities of like, comments and share
     * Create main page
     * Create "AddTransaction" button and page
-    * 
 
     - Doing:
-    * Build components:
-     * TransacstionItem.tsx // important
+    * Create Feedback page
 
     - Done
+    * Make successful register go to login page (change UI)
+    * Make successful login direct to profile and clean input (change UI)
+    * Create About page
+    * Create Register page
     * Connect to backend
     * Prototype an web-application in Figma or other source
     * Change DBTypes to own database info

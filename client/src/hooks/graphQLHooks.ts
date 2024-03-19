@@ -71,11 +71,11 @@ const useTransaction = () => {
       'transaction_id' | 'user_id' | 'thumbnail' | 'created_at'
     > = {
       title: inputs.title,
+      amount: 0,
       description: inputs.description,
       filename: file.data.filename,
       filesize: file.data.filesize,
       media_type: file.data.media_type,
-      amount: 0
     };
 
     // TODO: post the data to Transaction API and get the data as TransactionResponse

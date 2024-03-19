@@ -19,7 +19,7 @@ type User = {
 type Transaction = {
   transaction_id: string;
   user_id: string;
-  amount: number
+  amount: number;
   thumbnail: string;
   filename: string;
   filesize: number;
