@@ -68,7 +68,6 @@ const useTransaction = () => {
       filename: file.data.filename,
       filesize: file.data.filesize,
       media_type: file.data.media_type,
-      amount: 0,
     };
 
     // TODO: post the data to Transaction API and get the data as TransactionResponse

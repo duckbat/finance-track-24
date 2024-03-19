@@ -19,7 +19,6 @@ type User = {
 type Transaction = {
   transaction_id: string;
   user_id: string;
-  amount: number;
   thumbnail: string;
   filename: string;
   filesize: number;
@@ -79,7 +78,6 @@ type MostLikedTransaction = Pick<
   | 'filesize'
   | 'media_type'
   | 'title'
-  | 'amount'
   | 'description'
   | 'created_at'
 > &

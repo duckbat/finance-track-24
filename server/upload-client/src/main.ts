@@ -144,8 +144,8 @@ const addFilesToDom = async () => {
 
     // grapql query to get all files (copy from sandbox)
     const query = `
-      query MediaItems {
-        mediaItems {
+      query Transactions {
+        transactions {
           filename
           thumbnail
           title
@@ -159,13 +159,13 @@ const addFilesToDom = async () => {
         'Content-Type': 'application/json',
       },
     };
-    const fileItems = await fetchData<{data: {mediaItems: Transaction[]}}>(
+    const fileItems = await fetchData<{data: {transactions: Transaction[]}}>(
       import.meta.env.VITE_GRAPHQL_SERVER,
       options
     );
     console.log(fileItems);
     // loop through files and add them to the DOM
-    fileItems.data.mediaItems.forEach((file: any) => {
+    fileItems.data.transactions.forEach((file: any) => {
       const tr = document.createElement('tr');
       const td = document.createElement('td');
       const img = document.createElement('img');

@@ -74,7 +74,7 @@ const getUserByEmail = async (email: string): Promise<UserWithLevel | null> => {
       UserLevels.level_name
     FROM Users
     JOIN UserLevels
-    ON Users.user_level_id = UserLevels.level_i d
+    ON Users.user_level_id = UserLevels.level_id
     WHERE Users.email = ?
   `,
       [email]

@@ -1,18 +1,18 @@
-import {useState} from 'react';
-import {useForm} from '../hooks/formHooks';
-import {useFile, useTransaction} from '../hooks/graphQLHooks';
-import {useNavigate} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useForm } from '../hooks/formHooks';
+import { useFile, useTransaction } from '../hooks/graphQLHooks';
+import { useNavigate } from 'react-router-dom';
 
-// Upload.tsx
 const Upload = () => {
   const [file, setFile] = useState<File | null>(null);
-  const {postFile} = useFile();
-  const {postTransaction} = useTransaction();
+  const { postFile } = useFile();
+  const { postTransaction } = useTransaction();
   const navigate = useNavigate();
 
   const initValues = {
     title: '',
     description: '',
+    amount: '', // Make sure amount is initialized as a string
   };
 
   const doUpload = async () => {
@@ -21,12 +21,13 @@ const Upload = () => {
       if (!token || !file) {
         return;
       }
-      // TODO: call postFile function (see below)
+
       const fileResult = await postFile(file, token);
-      // TODO: call postMedia function (see below)
-      const transactionResult = await postTransaction(fileResult, inputs, token);
+
+      // Convert the amount to a number before passing to postTransaction
+      const transactionResult = await postTransaction(fileResult, { ...inputs, amount: parseFloat(inputs.amount).toString() }, token);
+
       alert(transactionResult.message);
-      // TODO: redirect to Home
       navigate('/');
     } catch (e) {
       console.log((e as Error).message);
@@ -39,10 +40,8 @@ const Upload = () => {
     }
   };
 
-  const {handleSubmit, handleInputChange, inputs} = useForm(
-    doUpload,
-    initValues,
-  );
+  const { handleSubmit, handleInputChange, inputs } = useForm(doUpload, initValues);
+
 
   return (
     <>

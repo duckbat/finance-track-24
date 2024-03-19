@@ -120,10 +120,10 @@ const fetchTransactionById = async (id: number): Promise<Transaction | null> => 
 const postTransaction = async (
   transaction: Omit<Transaction, 'transaction_id' | 'created_at' | 'thumbnail'>,
 ): Promise<Transaction | null> => {
-  const {user_id, amount, filename, filesize, media_type, title, description} = transaction;
-  const sql = `INSERT INTO Transactions (user_id, amount, filename, filesize, media_type, title, description)
+  const {user_id, filename, filesize, media_type, title, description} = transaction;
+  const sql = `INSERT INTO Transactions (user_id, filename, filesize, media_type, title, description)
                VALUES (?, ?, ?, ?, ?, ?)`;
-  const params = [user_id, amount, filename, filesize, media_type, title, description];
+  const params = [user_id, filename, filesize, media_type, title, description];
   try {
     const result = await promisePool.execute<ResultSetHeader>(sql, params);
     const [rows] = await promisePool.execute<RowDataPacket[] & Transaction[]>(

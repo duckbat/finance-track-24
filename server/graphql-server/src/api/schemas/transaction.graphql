@@ -1,17 +1,15 @@
 type Transaction {
     transaction_id: ID!
     user_id: ID!
-    amount: Int!
-    title: String!
-    description: String
-    thumbnail: String!
+    owner: User!
     filename: String!
+    thumbnail: String!
     filesize: Int!
     media_type: String!
-    category_id: Int!
-    category: [Category]
+    title: String!
     created_at: String!
-    owner: User
+    description: String
+    category: [Category]
 }
 
 type TransactionResponse {
@@ -22,14 +20,13 @@ type TransactionResponse {
 type Query {
     transactions: [Transaction]
     transaction(transaction_id: ID!): Transaction
-    transactionsByCategory(category: String!): [Transaction]
+    transactionsByCategory(category_id: String!): [Transaction]
 }
 
 input TransactionInput {
     user_id: ID!    
     filename: String!
     filesize: Int!
-    amount: Int!
     media_type: String!
     title: String!
     description: String
@@ -38,7 +35,6 @@ input TransactionInput {
 input TransactionUpdateInput {
     title: String
     description: String
-    amount: Int
 }
 
 input AddCategoryToTransactionInput {
@@ -49,5 +45,5 @@ input AddCategoryToTransactionInput {
 type Mutation {
     createTransaction(input: TransactionInput!): Transaction
     addCategoryToTransaction(input: AddCategoryToTransactionInput!): Transaction
-    updateTransaction(input: TransactionUpdateInput!, transaction_id: ID!): TransactionResponse
+    updateTransaction(input: TransactionUpdateInput!, transaction_id: ID): Transaction
 }
