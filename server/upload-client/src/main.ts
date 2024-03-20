@@ -99,7 +99,6 @@ const postFile = async (uploadResponse: UploadResponse) => {
   const variables = {
     input: {
       title: titleInput && titleInput.value,
-      amount:0,
       description: descriptionInput && descriptionInput.value,
       filename: uploadResponse.data.filename,
       media_type: uploadResponse.data.media_type,

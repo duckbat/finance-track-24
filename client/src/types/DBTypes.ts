@@ -19,6 +19,7 @@ type User = {
 type Transaction = {
   transaction_id: string;
   user_id: string;
+  amount: number;
   thumbnail: string;
   filename: string;
   filesize: number;
@@ -74,6 +75,7 @@ type UploadResult = {
 type MostLikedTransaction = Pick<
   Transaction,
   | 'transaction_id'
+  | 'amount'
   | 'filename'
   | 'filesize'
   | 'media_type'
@@ -95,6 +97,7 @@ type TokenContent = Pick<User, 'user_id'> & Pick<UserLevel, 'level_name'>;
 
 type TransactionWithOwner = Transaction & Pick<User, 'username'> & {
   owner: User;
+  category?: Category[];
   likes?: Like[];
   rating?: Rating[];
   likes_count: number;
