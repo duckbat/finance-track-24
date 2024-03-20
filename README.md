@@ -2,7 +2,7 @@
 Share your spendings with your friends and let them see how fast your money dissapears :D
 
 ## Link for the project
-<https://users.metropolia.fi/~khaic/K2024/finance-track-24>
+<https://users.metropolia.fi/~khaic/K2024/react-k2024/>
 
 
 ## Technologies used:

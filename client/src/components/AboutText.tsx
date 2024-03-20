@@ -12,13 +12,12 @@ const AboutText = () => {
           </span>
         </h1>
         <p className="pt-3 text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-300">
-          This super-duper-puper shameful and innovative app will show the world
-          what a person like you is spending their money on.{' '}
+          This is super duper puper app, that lets you post things you want to post{' '}
         </p>
         <hr className="p-2" />
         <div className="m-4 space-y-4">
           <h1 className="mb-4">
-            Just do these things to make everyone know about your expense :
+            Just do these things to start posting your images :
           </h1>
           <Link to="/register">
             <li className="underline-offset-3 underline decoration-blue-400 decoration-2 hover:decoration-red-400 dark:decoration-blue-300 hover:dark:decoration-red-300">
@@ -32,17 +31,17 @@ const AboutText = () => {
           </Link>
           <Link to="/upload">
             <li className="underline-offset-3 underline decoration-blue-400 decoration-2 hover:decoration-red-400 dark:decoration-blue-300 hover:dark:decoration-red-300">
-              Crete your first transaction
+              Add your first media
             </li>
           </Link>
           <Link to="/">
             <li className="underline-offset-3 underline decoration-blue-400 decoration-2 hover:decoration-red-400 dark:decoration-blue-300 hover:dark:decoration-red-300">
-              Enjoy your transaction being displayed on Feed
+              Enjoy your cat pitcures being displayed on Feed
             </li>
           </Link>
           <Link to="/profile">
             <li className="underline-offset-3 underline decoration-blue-400 decoration-2 hover:decoration-red-400 dark:decoration-blue-300 hover:dark:decoration-red-300">
-              In need, you can modify and view all of your transactions here
+              In need, you can modify and view all of your medias here "BETA" (probably doesn't work yet)
             </li>
           </Link>
         </div>

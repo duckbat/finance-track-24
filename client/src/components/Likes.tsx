@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {useEffect, useReducer} from 'react';
 import {Like, MediaItemWithOwner} from '../types/DBTypes';
 import {useLike} from '../hooks/graphQLHooks';
