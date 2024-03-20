@@ -1,4 +1,4 @@
-import {Transaction, UserWithNoPassword} from './DBTypes';
+import {MediaItem, UserWithNoPassword} from './DBTypes';
 
 type MessageResponse = {
   message: string;
@@ -8,8 +8,8 @@ type ErrorResponse = MessageResponse & {
   stack?: string;
 };
 
-type TransactionResponse = MessageResponse & {
-  transaction: Transaction | Transaction[];
+type MediaResponse = MessageResponse & {
+  media: MediaItem | MediaItem[];
 };
 
 // for auth server
@@ -47,7 +47,7 @@ type UploadResponse = MessageResponse & {
 export type {
   MessageResponse,
   ErrorResponse,
-  TransactionResponse,
+  MediaResponse,
   LoginResponse,
   UploadResponse,
   UserResponse,

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useForm } from '../../hooks/formHooks';
-import { useFile, useTransaction } from '../../hooks/graphQLHooks';
+import { useFile, useMedia } from '../../hooks/graphQLHooks';
 import { useNavigate } from 'react-router-dom';
 
 const Upload = () => {
   const [file, setFile] = useState<File | null>(null);
   const { postFile } = useFile();
-  const { postTransaction } = useTransaction();
+  const { postMedia } = useMedia();
   const navigate = useNavigate();
 
   const initValues = {
@@ -25,7 +25,7 @@ const Upload = () => {
       const fileResult = await postFile(file, token);
 
       // Convert the amount to a number before passing to postTransaction
-      const transactionResult = await postTransaction(fileResult, inputs, token);
+      const transactionResult = await postMedia(fileResult, inputs, token);
 
       alert(transactionResult.message);
       navigate('/');
@@ -45,7 +45,7 @@ const Upload = () => {
   return (
     <>
       <h1 className="pb-20 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-        Add Transaction
+        Add Media
       </h1>
       <form onSubmit={handleSubmit}>
         <div className="flex w-4/5">

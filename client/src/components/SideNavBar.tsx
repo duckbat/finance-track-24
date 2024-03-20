@@ -63,7 +63,7 @@ const SideNavBar = () => {
                 </svg>
 
                 <span className="ms-3 flex-1 whitespace-nowrap">
-                  Add Transaction
+                  Add Media 
                 </span>
               </Link>
             </li>

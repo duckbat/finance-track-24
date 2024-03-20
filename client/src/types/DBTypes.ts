@@ -1,27 +1,26 @@
-// Type definitions for database tables and their relationships
-// "Convert to GraphQL"
-
 type UserLevel = {
-  level_id: string;
+  // level_id: number; // REST API
+  level_id: string; // GraphQL
   level_name: 'Admin' | 'User' | 'Guest';
 };
 
 type User = {
-  user_id: string;
+  // user_id: number; // REST API
+  user_id: string; // GraphQL
   username: string;
   password: string;
   email: string;
   user_level_id: number;
-  profile_pic: string | null;
   created_at: Date | string;
 };
 
-type Transaction = {
-  transaction_id: string;
-  user_id: string;
-  amount: number;
-  thumbnail: string;
+type MediaItem = {
+  // media_id: number; // REST API
+  // user_id: number; // REST API
+  media_id: string; // GraphQL
+  user_id: string; // GraphQL
   filename: string;
+  thumbnail: string;
   filesize: number;
   media_type: string;
   title: string;
@@ -30,40 +29,50 @@ type Transaction = {
 };
 
 type Comment = {
-  comment_id: string;
-  transaction_id: string;
-  user_id: string;
+  // comment_id: number; // REST API
+  // media_id: number; // REST API
+  comment_id: string; // GraphQL
+  media_id: string; // GraphQL
+  user_id: number;
   comment_text: string;
   created_at: Date;
 };
 
 type Like = {
-  like_id: string;
-  transaction_id: string;
-  user_id: string;
+  // like_id: number; // REST API
+  // media_id: number; // REST API
+  // user_id: number; // REST API
+  like_id: string; // GraphQL
+  media_id: string; // GraphQL
+  user_id: string; // GraphQL
   created_at: Date;
 };
 
 type Rating = {
-  rating_id: string;
-  transaction_id: string;
-  user_id: string;
+  // rating_id: number; // REST API
+  // media_id: number; // REST API
+  // user_id: number; // REST API
+  rating_id: string; // GraphQL
+  media_id: string; // GraphQL
+  user_id: string; // GraphQL
   rating_value: number;
   created_at: Date;
 };
 
-type Category = {
-  category_id: string;
-  category_name: string;
-  icon: string;
+type Tag = {
+  // tag_id: number; // REST API
+  tag_id: string; // GraphQL
+  tag_name: string;
 };
 
-type TransactionCategory = {
-  transaction_id: string;
-  category_id: string;
+type MediaItemTag = {
+  // media_id: number; // REST API
+  // tag_id: number; // REST API
+  media_id: string; // GraphQL
+  tag_id: string; // GraphQL
 };
 
-type CategoryResult = TransactionCategory & Category;
+type TagResult = MediaItemTag & Tag;
 
 type UploadResult = {
   message: string;
@@ -72,10 +81,9 @@ type UploadResult = {
   };
 };
 
-type MostLikedTransaction = Pick<
-  Transaction,
-  | 'transaction_id'
-  | 'amount'
+type MostLikedMedia = Pick<
+  MediaItem,
+  | 'media_id'
   | 'filename'
   | 'filesize'
   | 'media_type'
@@ -95,11 +103,15 @@ type UserWithNoPassword = Omit<UserWithLevel, 'password'>;
 
 type TokenContent = Pick<User, 'user_id'> & Pick<UserLevel, 'level_name'>;
 
-type TransactionWithOwner = Transaction & Pick<User, 'username'> & {
+// for REST API
+// type MediaItemWithOwner = MediaItem & Pick<User, 'username'>;
+
+// FOR GRAPHQL
+type MediaItemWithOwner = MediaItem & {
   owner: User;
-  category?: Category[];
+  tags?: Tag[];
   likes?: Like[];
-  rating?: Rating[];
+  ratings?: Rating[];
   likes_count: number;
   average_rating?: number;
   comments_count: number;
@@ -114,18 +126,18 @@ type FileInfo = {
 export type {
   UserLevel,
   User,
-  Transaction,
+  MediaItem,
   Comment,
   Like,
   Rating,
-  Category,
-  TransactionCategory,
-  CategoryResult,
+  Tag,
+  MediaItemTag,
+  TagResult,
   UploadResult,
+  MostLikedMedia,
   UserWithLevel,
   UserWithNoPassword,
   TokenContent,
-  TransactionWithOwner,
-  MostLikedTransaction,
+  MediaItemWithOwner,
   FileInfo,
 };

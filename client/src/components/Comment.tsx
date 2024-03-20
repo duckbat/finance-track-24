@@ -5,8 +5,9 @@ import {useCommentStore} from '../store';
 import {MediaItemWithOwner} from '../types/DBTypes';
 import {useComment} from '../hooks/graphQLHooks';
 
-const Comments = ({item}: {item: MediaItemWithOwner}) => {
-  const {comments, setComments} = useCommentStore();
+
+const Comment = ({item}: {item: MediaItemWithOwner}) => {
+  const { setComments} = useCommentStore();
   const {user} = useUserContext();
   const formRef = useRef<HTMLFormElement>(null);
   const {getCommentsByMediaId, postComment} = useComment();
@@ -71,7 +72,7 @@ const Comments = ({item}: {item: MediaItemWithOwner}) => {
                 onChange={handleInputChange}
               />
               <button
-                className="mb-2 me-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                 type="submit"
               >
                 Post
@@ -80,29 +81,9 @@ const Comments = ({item}: {item: MediaItemWithOwner}) => {
           </form>
         </>
       )}
-      {comments.length > 0 && (
-        <>
-          <h3 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Comments</h3>
-          <ul className="dark:text-black">
-            {comments.map((comment) => (
-              <li key={comment.comment_id}>
-                <div className="rounded-md border border-black bg-white p-3 mb-2">
-                  <span className="font-bold ">
-                    On{' '}
-                    {new Date(comment.created_at!).toLocaleDateString('fi-FI')}{' '}
-                  </span>
-                  <span className="font-bold text-slate-500">
-                    {comment.username} wrote:
-                  </span>
-                  <span className="ml-2">{comment.comment_text}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
     </>
   );
+
 };
 
-export default Comments;
+export default Comment;
