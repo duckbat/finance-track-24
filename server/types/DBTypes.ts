@@ -20,19 +20,16 @@ type User = {
 type Transaction = {
   transaction_id: number;
   user_id: number;
-  amount: number
+  amount: number;
+  thumbnail: string;
   filename: string;
   filesize: number;
   media_type: string;
   title: string;
   description: string | null;
   created_at: Date | string;
-  owner: User;
-  category?: Category[];
-  likes?: Like[];
-  likes_count: number;
-  comments_count: number;
 };
+
 
 type Comment = {
   comment_id: number;

@@ -33,7 +33,7 @@ CREATE TABLE Users (
 CREATE TABLE Transactions (
     transaction_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    amount DECIMAL(10, 2) NOT NULL,
+    amount INT NOT NULL,
     title VARCHAR(255) NOT NULL,
     description VARCHAR(255),
     filename VARCHAR(255),
@@ -43,17 +43,6 @@ CREATE TABLE Transactions (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (category_id) REFERENCES Categories(category_id)
-);
-
--- Friends table
-CREATE TABLE Friends (
-    friends_id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id1 INT,
-    user_id2 INT,
-    status ENUM('pending', 'accepted', 'rejected') NOT NULL DEFAULT 'pending',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id1) REFERENCES Users(user_id),
-    FOREIGN KEY (user_id2) REFERENCES Users(user_id)
 );
 
 -- Comments table
@@ -119,13 +108,8 @@ INSERT INTO Categories (category_name) VALUES
 
 -- Inserting data into Transactions table
 INSERT INTO Transactions (user_id, amount, title, description, category_id) VALUES
-(1, 50.00, 'Grocery Shopping', 'Bought groceries for the week', 1),
-(2, 25.00, 'Movie Night', 'Watched a movie with friends', 2);
-
--- Inserting data into Friends table
-INSERT INTO Friends (user_id1, user_id2, status) VALUES
-(1, 2, 'accepted'),
-(1, 3, 'pending');
+(1, 50.43, 'Grocery Shopping', 'Bought groceries for the week', 1),
+(4, 25.53, 'Movie Night', 'Watched a movie with friends', 2);
 
 -- Inserting data into Comments table
 INSERT INTO Comments (transaction_id, user_id, comment_text) VALUES

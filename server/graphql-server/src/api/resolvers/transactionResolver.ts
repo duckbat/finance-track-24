@@ -30,7 +30,7 @@ import {
         args: {
           input: Omit<
             Transaction,
-            'transaction_id' | 'created_at' | 'thumbnail' | 'user_id'
+            'transaction_id' | 'created_at' | 'thumbnail'
           >;
         },
         context: MyContext,

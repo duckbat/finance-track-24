@@ -1,4 +1,4 @@
-import { useUserContext } from '../hooks/ContextHooks';
+import { useUserContext } from '../../hooks/ContextHooks';
 import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {

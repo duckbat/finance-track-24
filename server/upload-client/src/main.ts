@@ -135,6 +135,7 @@ const addUserDataToDom = (user: UserWithNoPassword): void => {
 
 // function to add file data (filename, mimetype) to the
 // Media DOM elements
+// function to add file data (filename) to the Media DOM elements
 const addFilesToDom = async () => {
   try {
     if (!filesList) {
@@ -146,8 +147,6 @@ const addFilesToDom = async () => {
     const query = `
       query Transactions {
         transactions {
-          filename
-          thumbnail
           title
         }
       }
@@ -168,23 +167,19 @@ const addFilesToDom = async () => {
     fileItems.data.transactions.forEach((file: any) => {
       const tr = document.createElement('tr');
       const td = document.createElement('td');
-      const img = document.createElement('img');
-      img.src = file.thumbnail;
-      img.alt = file.title;
-      td.appendChild(img);
-      tr.appendChild(td);
-      const td2 = document.createElement('td');
       const a = document.createElement('a');
       a.href = file.filename;
       a.textContent = 'Open ' + file.title;
-      td2.appendChild(a);
-      tr.appendChild(td2);
+      td.appendChild(a);
+      tr.appendChild(td);
       filesList.appendChild(tr);
     });
   } catch (error) {
     console.log(error);
   }
 };
+
+
 
 addFilesToDom();
 

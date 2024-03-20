@@ -24,7 +24,6 @@ type Query {
 }
 
 input TransactionInput {
-    user_id: ID!    
     filename: String!
     filesize: Int!
     media_type: String!

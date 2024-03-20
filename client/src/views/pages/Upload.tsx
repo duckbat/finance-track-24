@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useForm } from '../hooks/formHooks';
-import { useFile, useTransaction } from '../hooks/graphQLHooks';
+import { useForm } from '../../hooks/formHooks';
+import { useFile, useTransaction } from '../../hooks/graphQLHooks';
 import { useNavigate } from 'react-router-dom';
 
 const Upload = () => {
@@ -25,7 +25,7 @@ const Upload = () => {
       const fileResult = await postFile(file, token);
 
       // Convert the amount to a number before passing to postTransaction
-      const transactionResult = await postTransaction(fileResult, { ...inputs, amount: parseFloat(inputs.amount).toString() }, token);
+      const transactionResult = await postTransaction(fileResult, inputs, token);
 
       alert(transactionResult.message);
       navigate('/');
@@ -41,7 +41,6 @@ const Upload = () => {
   };
 
   const { handleSubmit, handleInputChange, inputs } = useForm(doUpload, initValues);
-
 
   return (
     <>
@@ -59,6 +58,7 @@ const Upload = () => {
             type="text"
             id="title"
             onChange={handleInputChange}
+            value={inputs.title}
           />
         </div>
         <div className="flex w-4/5">
@@ -71,6 +71,7 @@ const Upload = () => {
             rows={5}
             id="description"
             onChange={handleInputChange}
+            value={inputs.description}
           ></textarea>
         </div>
         <div className="flex w-4/5">
@@ -102,7 +103,7 @@ const Upload = () => {
           <button
             className="m-3 w-1/3 rounded-md bg-slate-600 p-3 disabled:text-slate-600"
             type="submit"
-            disabled={file && inputs.title.length > 3 ? false : true}
+            disabled={file && inputs.title.length > 3 && inputs.description.length > 0 ? false : true}
           >
             Upload
           </button>
