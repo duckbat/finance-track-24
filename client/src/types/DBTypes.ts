@@ -95,7 +95,6 @@ type TokenContent = Pick<User, 'user_id'> & Pick<UserLevel, 'level_name'>;
 
 type TransactionWithOwner = Transaction & Pick<User, 'username'> & {
   owner: User;
-  category?: Category[];
   likes?: Like[];
   rating?: Rating[];
   likes_count: number;

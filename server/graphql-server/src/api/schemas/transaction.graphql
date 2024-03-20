@@ -2,11 +2,11 @@ type Transaction {
     transaction_id: ID!
     user_id: ID!
     owner: User!
-    filename: String!
-    thumbnail: String!
-    filesize: Int!
-    media_type: String!
-    title: String!
+    filename: String
+    thumbnail: String
+    filesize: Int
+    media_type: String
+    title: String
     created_at: String!
     description: String
     category: [Category]
