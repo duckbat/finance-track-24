@@ -1,6 +1,6 @@
 # Duckjet tracket
 <del>Share your spendings with your friends and let them see how fast your money dissapears :D</del>
-Media Sharing app with borrowed server side from Metropolia UAS teachers
+- Media Sharing app with borrowed server side from Metropolia UAS teachers
 
 ## Link for the project (Works only on Metropolia servers / VPN)
 <https://users.metropolia.fi/~khaic/K2024/react-k2024/>
