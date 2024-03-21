@@ -26,18 +26,24 @@
 - Register
 - Login / Logout
 - View Feed
-- Create Expense / Transaction
-- Post Expense / Transaction
-- Modify Expense / Transaction
+- Create Media (Picture / Video)
+- Post Media (Picture / Video)
+- <del>Modfiy posted media</del>
 
 
 #### Additional functionalities
 
-- Toggle systems or browsers appearance to change to dark/white mode
+- Toggle systems or browsers appearance to change to dark/white mode (made with TailwindCSS built-in dark mode)
+- 
 
 ## Faced problems / Bugs and their solutions (or I just gave up on them) 
+- Own server side
+- Modify media
 
-
+## Plannings for future updates: 
+- Modifying posted media
+- Friends functionalities
+  
 
 ## References / Graphic inspos
 ### React / Tailwindcss component libraries
