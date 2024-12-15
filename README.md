@@ -1,5 +1,4 @@
 # GraphQL Media Sharing App
-<del>Share your spendings with your friends and let them see how fast your money dissapears :D</del>
 - Media Sharing app with borrowed server side from Metropolia UAS teachers
 
 ## Link for the project (Works only on Metropolia servers / VPN)
@@ -34,7 +33,6 @@
 #### Additional functionalities
 
 - Toggle systems or browsers appearance to change to dark/white mode (made with TailwindCSS built-in dark mode)
-- 
 
 ## Faced problems / Bugs and their solutions (or I just gave up on them) 
 - Own server side
