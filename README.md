@@ -1,4 +1,4 @@
-# Duckjet tracket
+# GraphQL Media Sharing App
 <del>Share your spendings with your friends and let them see how fast your money dissapears :D</del>
 - Media Sharing app with borrowed server side from Metropolia UAS teachers
 
